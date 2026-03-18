@@ -7,6 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -50,6 +53,9 @@
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --surface-1: oklch(0.145 0 0);
+  --surface-2: oklch(0.175 0 0);
+  --surface-3: oklch(0.22 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -83,8 +89,11 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.07 0 0);
   --foreground: oklch(0.985 0 0);
+  --surface-1: oklch(0.1 0 0);
+  --surface-2: oklch(0.145 0 0);
+  --surface-3: oklch(0.205 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -121,9 +130,33 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
   html {
     @apply font-sans;
   }
+}
+
+
+/* Nav highlight — subtle underline */
+.nav-highlight {
+  position: relative;
+}
+.nav-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--foreground);
+  opacity: 0.5;
+  transition: width 0.25s ease;
+}
+.nav-highlight.active::after {
+  width: 100%;
+}
+.nav-highlight:hover::after {
+  width: 100%;
+  opacity: 0.3;
 }
