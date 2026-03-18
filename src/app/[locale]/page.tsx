@@ -396,15 +396,7 @@ export default function HomePage() {
                   <Github size={16} />
                   GitHub
                 </a>
-                <a
-                  href="mailto:gustavosilveira232@gmail.com"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Mail size={16} />
-                  Email
-                </a>
               </div>
-            </div>
           </ScrollReveal>
         </div>
       </section>
