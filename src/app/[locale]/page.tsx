@@ -366,55 +366,27 @@ export default function HomePage() {
 
       {/* ─── Contact ─── */}
       <section id="contact" className="py-24 px-6 border-t border-border">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto text-center">
           <ScrollReveal>
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                {t("contact.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                {t("contact.subtitle")}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <form
-              action="https://formspree.io/f/placeholder"
-              method="POST"
-              className="space-y-6 mb-16"
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              {t("contact.title")}
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              {t("contact.subtitle")}
+            </p>
+            <a
+              href="https://www.linkedin.com/in/gustavosilveira23/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium uppercase tracking-[1.2px] hover:opacity-90 transition-opacity"
             >
-              <div className="space-y-2">
-                <Label htmlFor="name">{t("contact.name")}</Label>
-                <Input id="name" name="name" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">{t("contact.email")}</Label>
-                <Input id="email" name="email" type="email" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">{t("contact.message")}</Label>
-                <Textarea id="message" name="message" rows={5} required />
-              </div>
-              <Button type="submit" className="w-full">
-                {t("contact.send")}
-              </Button>
-            </form>
+              <Linkedin size={18} />
+              {t("contact.cta_linkedin")}
+            </a>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-4">{t("contact.or")}</p>
-              <div className="flex items-center justify-center gap-6">
-                <a
-                  href="https://www.linkedin.com/in/gustavosilveira23/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Linkedin size={16} />
-                  LinkedIn
-                </a>
+            <div className="mt-12 flex items-center justify-center gap-6">
                 <a
                   href="https://github.com/Gustavosilveira23"
                   target="_blank"

@@ -75,7 +75,8 @@
   },
   "contact": {
     "title": "Let's talk",
-    "subtitle": "Have a project in mind? Want to exchange ideas? Send me a message.",
+    "subtitle": "Have a project in mind? Want to exchange ideas? Send me a message on LinkedIn.",
+    "cta_linkedin": "Chat on LinkedIn",
     "name": "Name",
     "email": "Email",
     "message": "Message",

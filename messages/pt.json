@@ -75,7 +75,8 @@
   },
   "contact": {
     "title": "Vamos conversar",
-    "subtitle": "Tem um projeto em mente? Quer trocar uma ideia? Manda uma mensagem.",
+    "subtitle": "Tem um projeto em mente? Quer trocar uma ideia? Manda uma mensagem no LinkedIn.",
+    "cta_linkedin": "Conversar no LinkedIn",
     "name": "Nome",
     "email": "Email",
     "message": "Mensagem",
