@@ -1,19 +1,18 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Link } from "@/i18n/navigation";
 import { projects } from "@/content/projects";
 import { Hero } from "@/components/hero";
+import { ServiceTag } from "@/components/service-tag";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { HorizontalScroll } from "@/components/horizontal-scroll";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight, Linkedin, Github, Mail } from "lucide-react";
-
-type Filter = "all" | "product" | "research" | "design";
+import { ArrowRight, ArrowUpRight, Linkedin, Github, Mail, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 const categoryLabels: Record<string, { pt: string; en: string }> = {
   product: { pt: "Produto, Design, Pesquisa", en: "Product, Design, Research" },
@@ -24,27 +23,46 @@ const categoryLabels: Record<string, { pt: string; en: string }> = {
 export default function HomePage() {
   const t = useTranslations();
   const locale = useLocale() as "pt" | "en";
-  const [filter, setFilter] = useState<Filter>("all");
-
-  const filtered =
-    filter === "all"
-      ? projects
-      : projects.filter((p) => p.category === filter);
-
-  const filters: { key: Filter; label: string }[] = [
-    { key: "all", label: t("portfolio.filter_all") },
-    { key: "product", label: t("portfolio.filter_product") },
-    { key: "research", label: t("portfolio.filter_research") },
-    { key: "design", label: t("portfolio.filter_design") },
-  ];
-
   const services = [
+    { title: t("services.d2c_title"), desc: t("services.d2c_desc"), tags: t("services.d2c_tags").split(", ") },
     { title: t("services.uxui_title"), desc: t("services.uxui_desc"), tags: t("services.uxui_tags").split(", ") },
     { title: t("services.research_title"), desc: t("services.research_desc"), tags: t("services.research_tags").split(", ") },
     { title: t("services.ds_title"), desc: t("services.ds_desc"), tags: t("services.ds_tags").split(", ") },
     { title: t("services.ai_title"), desc: t("services.ai_desc"), tags: t("services.ai_tags").split(", ") },
-    { title: t("services.d2c_title"), desc: t("services.d2c_desc"), tags: t("services.d2c_tags").split(", ") },
   ];
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const scrollCarousel = useCallback((direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const scrollAmount = carouselRef.current.offsetWidth * 0.6;
+    carouselRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  }, []);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  }, [isDragging, startX, scrollLeft]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
 
 
 
@@ -54,46 +72,66 @@ export default function HomePage() {
       <Hero />
 
       {/* ─── Services ─── */}
-      <section id="services">
-        <HorizontalScroll
-          header={
-            <div className="mb-8">
-              <p className="text-xs uppercase tracking-[2px] text-muted-foreground mb-4 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-muted-foreground" />
-                {t("services.label")}
-              </p>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
-                {t("services.title")}
-              </h2>
-            </div>
-          }
+      <section id="services" className="py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto mb-8">
+          <p className="text-xs uppercase tracking-[2px] text-muted-foreground mb-4 flex items-center gap-3">
+            <span className="inline-block w-6 h-px bg-muted-foreground" />
+            {t("services.label")}
+          </p>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+            {t("services.title")}
+          </h2>
+        </div>
+        {/* Carousel nav arrows */}
+        <div className="max-w-7xl mx-auto flex justify-end gap-2 mb-4 pr-2">
+          <button
+            onClick={() => scrollCarousel("left")}
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={() => scrollCarousel("right")}
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+            aria-label="Next"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        {/* Carousel track — drag + touch + arrows */}
+        <div
+          ref={carouselRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className={`flex gap-3 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4 ${isDragging ? "cursor-grabbing select-none" : "cursor-grab"}`}
         >
           {services.map((service) => (
             <div
               key={service.title}
-              className="min-w-[85vw] lg:min-w-[600px] lg:max-w-[600px] shrink-0"
+              className="min-w-[75vw] sm:min-w-[42vw] lg:min-w-[28vw] max-w-[340px] shrink-0"
             >
-              <div className="bg-surface-2 rounded-[20px] p-8 md:p-10 h-full hover:bg-surface-3 transition-colors duration-300">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  {service.desc}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
+              <div className="bg-surface-2 rounded-lg p-6 md:p-8 hover:bg-surface-3 transition-colors duration-300 flex flex-col justify-between h-full pointer-events-none">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 mt-5">
                   {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-[11px] rounded-full border border-border text-muted-foreground"
-                    >
-                      {tag}
-                    </span>
+                    <ServiceTag key={tag} tag={tag} isDragging={isDragging} />
                   ))}
                 </div>
               </div>
             </div>
           ))}
-        </HorizontalScroll>
+        </div>
       </section>
 
       {/* ─── Portfolio ─── */}
@@ -107,24 +145,9 @@ export default function HomePage() {
                   <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-foreground">
                     {t("portfolio.title")}
                   </h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-md mb-8">
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
                     {t("portfolio.subtitle")}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {filters.map(({ key, label }) => (
-                      <button
-                        key={key}
-                        onClick={() => setFilter(key)}
-                        className={`px-4 py-2 rounded-full text-xs uppercase tracking-[1.2px] font-medium transition-all duration-200 ${
-                          filter === key
-                            ? "bg-foreground text-background"
-                            : "bg-border text-muted-foreground hover:text-foreground hover:bg-accent"
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
                 </ScrollReveal>
               </div>
             </div>
@@ -132,7 +155,7 @@ export default function HomePage() {
             {/* Right column — scrollable cards */}
             <div className="lg:col-span-7">
           <div className="space-y-16">
-            {filtered.map((project, i) => (
+            {projects.map((project, i) => (
               <ScrollReveal key={project.slug} delay={i * 0.08}>
                 <Link
                   href={`/portfolio/${project.slug}`}
@@ -265,10 +288,10 @@ export default function HomePage() {
 
                 <div className="border-t border-foreground">
                   {[
-                    { company: "Raio X Creator", role: "Foundation Team & Product Builder", period: "01/25 - " + (locale === "pt" ? "Atual" : "Current"), location: "Remoto" },
-                    { company: "Duo AI", role: "Foundation Team & Product Builder", period: "03/25 - " + (locale === "pt" ? "Atual" : "Current"), location: "Remoto" },
-                    { company: "Hotmart", role: "UX Designer & Researcher", period: "01/23 - 12/24", location: "Belo Horizonte" },
-                    { company: locale === "pt" ? "Consultoria" : "Consulting", role: "UX/UI Designer & UX Researcher", period: "2015 - " + (locale === "pt" ? "Atual" : "Current"), location: "Remoto" },
+                    { company: "Raio X Creator", role: "Founding Designer & Product Builder", period: "01/25 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
+                    { company: "Duo AI", role: "Founding Designer & Product Builder", period: "03/25 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
+                    { company: "Hotmart", role: "UX Designer & Researcher", period: "01/23 – 12/24", location: "Belo Horizonte" },
+                    { company: locale === "pt" ? "Freelance & Consultoria" : "Freelance & Consulting", role: "Senior UX/UI Designer & Researcher", period: "2015 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
                   ].map((exp, i) => (
                     <ScrollReveal key={exp.company} delay={i * 0.05}>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-b border-border items-baseline">
@@ -374,32 +397,52 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground mb-10">
               {t("contact.subtitle")}
             </p>
-            <a
-              href="https://www.linkedin.com/in/gustavosilveira23/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium uppercase tracking-[1.2px] hover:opacity-90 transition-opacity"
-            >
-              <Linkedin size={18} />
-              {t("contact.cta_linkedin")}
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://www.linkedin.com/in/gustavosilveira23/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium uppercase tracking-[1.2px] hover:opacity-90 transition-opacity"
+              >
+                <Linkedin size={18} />
+                {t("contact.cta_linkedin")}
+              </a>
+              <a
+                href="https://calendar.app.google/jvDs7YqaRTi9E2Wa8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 border border-border text-foreground rounded-full text-sm font-medium uppercase tracking-[1.2px] hover:bg-surface-2 transition-colors"
+              >
+                <Calendar size={18} />
+                {t("contact.cta_schedule")}
+              </a>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
             <div className="mt-12 flex items-center justify-center gap-6">
-                <a
-                  href="https://github.com/Gustavosilveira23"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Github size={16} />
-                  GitHub
-                </a>
-              </div>
+              <a
+                href="https://github.com/Gustavosilveira23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github size={16} />
+                GitHub
+              </a>
+            </div>
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ─── Availability Banner ─── */}
+      <div className="border-t border-border py-4 px-6 text-center">
+        <p className="text-xs uppercase tracking-[1.5px] text-muted-foreground">
+          {locale === "pt"
+            ? "Disponível para freelance & contrato · Remoto · UTC-3 · Flexível em fusos horários"
+            : "Available for freelance & contract work · Remote · UTC-3 · Flexible timezone overlap"}
+        </p>
+      </div>
     </>
   );
 }

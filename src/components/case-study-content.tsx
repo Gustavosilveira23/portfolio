@@ -29,6 +29,26 @@ function parseFindingsFromDecisions(
     });
 }
 
+function isVideo(src: string) {
+  return /\.(mp4|webm|mov)$/i.test(src);
+}
+
+function Media({ src, alt, className }: { src: string; alt?: string; className?: string }) {
+  if (isVideo(src)) {
+    return (
+      <video
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={className}
+      />
+    );
+  }
+  return <img src={src} alt={alt || ""} className={className} />;
+}
+
 function ContentBlock({
   label,
   content,
@@ -130,7 +150,7 @@ export function CaseStudyContent({
         <ScrollReveal>
           <div className="max-w-5xl mx-auto aspect-[16/9] rounded-2xl bg-surface-2 overflow-hidden">
             {project.images.length > 0 ? (
-              <img
+              <Media
                 src={project.images[0]}
                 alt={project.title[locale]}
                 className="w-full h-full object-cover"
@@ -167,9 +187,8 @@ export function CaseStudyContent({
           {project.images.length > 1 && (
             <ScrollReveal>
               <div className="max-w-3xl mx-auto rounded-2xl bg-surface-2 overflow-hidden">
-                <img
+                <Media
                   src={project.images[1]}
-                  alt=""
                   className="w-full h-auto"
                 />
               </div>
@@ -187,9 +206,8 @@ export function CaseStudyContent({
           {project.images.length > 3 && (
             <ScrollReveal>
               <div className="max-w-3xl mx-auto rounded-2xl bg-surface-2 overflow-hidden">
-                <img
+                <Media
                   src={project.images[3]}
-                  alt=""
                   className="w-full h-auto"
                 />
               </div>
@@ -231,19 +249,17 @@ export function CaseStudyContent({
             {project.images.length > 2 && (
               <ScrollReveal>
                 <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-                  <div className="rounded-2xl bg-surface-2 overflow-hidden h-[300px] md:h-[500px]">
-                    <img
+                  <div className="rounded-2xl bg-surface-2 overflow-hidden">
+                    <Media
                       src={project.images[2]}
-                      alt=""
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-auto"
                     />
                   </div>
                   {project.images.length > 4 && (
-                    <div className="rounded-2xl bg-surface-2 overflow-hidden h-[300px] md:h-[500px]">
-                      <img
+                    <div className="rounded-2xl bg-surface-2 overflow-hidden">
+                      <Media
                         src={project.images[4]}
-                        alt=""
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-auto"
                       />
                     </div>
                   )}

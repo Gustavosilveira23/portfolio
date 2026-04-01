@@ -14,34 +14,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Gustavo Silveira — UX Designer & Product Builder",
+    default: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
     template: "%s | Gustavo Silveira",
   },
   description:
-    "Portfolio de UX Design, UX Research e Product Building. Do research ao deploy. Construo produtos digitais com foco em experiência e dados.",
+    "Senior Product Designer specializing in AI product design, SaaS interfaces, and early-stage startups. 8+ years of experience. Available for freelance and contract work.",
   metadataBase: new URL("https://gustavosilveira.com"),
   alternates: {
     canonical: "/",
     languages: {
-      "pt-BR": "/",
-      "en": "/en",
+      "en": "/",
+      "pt-BR": "/pt",
     },
   },
   openGraph: {
     type: "website",
-    locale: "pt_BR",
-    alternateLocale: "en_US",
+    locale: "en_US",
+    alternateLocale: "pt_BR",
     siteName: "Gustavo Silveira",
-    title: "Gustavo Silveira — UX Designer & Product Builder",
+    title: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
     description:
-      "Portfolio de UX Design, UX Research e Product Building. Do research ao deploy.",
+      "I design AI products people actually understand. Senior Product Designer specializing in AI interfaces, SaaS, and early-stage products.",
     url: "https://gustavosilveira.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gustavo Silveira — UX Designer & Product Builder",
+    title: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
     description:
-      "Portfolio de UX Design, UX Research e Product Building. Do research ao deploy.",
+      "I design AI products people actually understand. Available for freelance and contract work.",
   },
   robots: {
     index: true,
@@ -57,12 +57,15 @@ export const metadata: Metadata = {
   authors: [{ name: "Gustavo Silveira", url: "https://gustavosilveira.com" }],
   creator: "Gustavo Silveira",
   keywords: [
-    "UX Designer",
-    "UX Researcher",
-    "Product Builder",
-    "Product Design",
-    "Design System",
-    "Portfolio",
+    "AI product designer",
+    "AI UX designer",
+    "SaaS product designer",
+    "startup UX designer",
+    "freelance product designer",
+    "conversational AI designer",
+    "LLM interface design",
+    "design systems",
+    "Senior Product Designer",
     "Gustavo Silveira",
   ],
 };
@@ -77,21 +80,35 @@ export default function RootLayout({
     "@type": "Person",
     name: "Gustavo Silveira",
     url: "https://gustavosilveira.com",
-    jobTitle: "UX Designer & Product Builder",
+    jobTitle: "Senior Product Designer",
     description:
-      "UX Designer, UX Researcher e Product Builder. Do research ao deploy.",
+      "Senior Product Designer specializing in AI product design, SaaS interfaces, and early-stage startups.",
     sameAs: [
       "https://www.linkedin.com/in/gustavosilveira23/",
       "https://github.com/Gustavosilveira23",
     ],
     knowsAbout: [
+      "AI Product Design",
       "UX Design",
-      "UX Research",
-      "Product Design",
+      "SaaS Design",
       "Design Systems",
-      "Frontend Development",
-      "AI-Enhanced Workflows",
+      "User Research",
+      "Conversational AI",
     ],
+    worksFor: [
+      { "@type": "Organization", name: "Raio X Creator" },
+      { "@type": "Organization", name: "Duo AI" },
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "UFMG",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Uberlandia",
+      addressRegion: "MG",
+      addressCountry: "BR",
+    },
   };
 
   return (
