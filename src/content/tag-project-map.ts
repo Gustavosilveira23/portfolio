@@ -2,7 +2,7 @@
 // Includes both EN and PT variants for bilingual support
 export const tagProjectMap: Record<string, string> = {
   // Design to Code
-  "Figma to code": "duo-ai",
+  "Figma to code": "duo-ai-creator-studio",
   "Claude Code": "raio-x-creator",
 
   // Product Design
@@ -17,6 +17,6 @@ export const tagProjectMap: Record<string, string> = {
   "Design tokens": "raio-x-creator",
 
   // AI Product Design
-  "AI-native interfaces": "duo-ai",
-  "Interfaces AI-native": "duo-ai",
+  "AI-native interfaces": "duo-ai-creator-studio",
+  "Interfaces AI-native": "duo-ai-creator-studio",
 };

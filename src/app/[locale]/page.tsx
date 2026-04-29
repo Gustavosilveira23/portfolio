@@ -288,9 +288,9 @@ export default function HomePage() {
 
                 <div className="border-t border-foreground">
                   {[
-                    { company: "Raio X Creator", role: "Founding Designer & Product Builder", period: "01/25 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
-                    { company: "Duo AI", role: "Founding Designer & Product Builder", period: "03/25 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
-                    { company: "Hotmart", role: "UX Designer & Researcher", period: "01/23 – 12/24", location: "Belo Horizonte" },
+                    { company: "Duo AI", role: "Founding Designer & Product Builder", period: "2025 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
+                    { company: "Hotmart", role: "UX Designer & Researcher", period: "2021 – 2025", location: "Belo Horizonte" },
+                    { company: "Sympla", role: "UX Designer & Researcher", period: "2019 – 2020", location: "Belo Horizonte" },
                     { company: locale === "pt" ? "Freelance & Consultoria" : "Freelance & Consulting", role: "Senior UX/UI Designer & Researcher", period: "2015 – " + (locale === "pt" ? "Atual" : "Present"), location: locale === "pt" ? "Remoto" : "Remote" },
                   ].map((exp, i) => (
                     <ScrollReveal key={exp.company} delay={i * 0.05}>

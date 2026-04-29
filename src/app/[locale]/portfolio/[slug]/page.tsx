@@ -16,9 +16,17 @@ const caseMeta: Record<string, { title: string; description: string }> = {
     title: "Automated Research Repository — Hotmart",
     description: "Centralized feedback system combining CSAT, NPS, and support data. Built at Hotmart to drive evidence-based product decisions.",
   },
-  "duo-ai": {
-    title: "Duo AI — Conversational AI Platform",
-    description: "Conversational AI platform design. Interface and experience design for natural interaction with language models.",
+  "hotmart-club-jtbd": {
+    title: "Hotmart Club — Creator Journey (JTBD)",
+    description: "End-to-end mapping of the Hotmart Club creator journey using Jobs To Be Done methodology. Adopted as roadmap prioritization reference across multiple product teams.",
+  },
+  "duo-ai-creator-studio": {
+    title: "Duo AI — Creator Studio",
+    description: "Studio design for Duo AI: the creation tool where creators build and configure AI assistants. End-to-end product design for the creator side of the platform.",
+  },
+  "sonho-grande": {
+    title: "Sonho Grande — School Dropout Prevention",
+    description: "Web and mobile app designed for Instituto Sonho Grande to help public school managers monitor dropout risk and act on it. UX, UI, and data visualization for social impact.",
   },
   "softruck-redesign": {
     title: "Softruck — Tracking App Redesign",

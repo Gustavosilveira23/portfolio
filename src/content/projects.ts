@@ -16,14 +16,95 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "duo-ai",
+    slug: "duo-ai-buyer-redesign",
+    category: "product",
+    coverImage: "/projects/Duo-ai-buyer-redesign/DuoAI-Consumer-Redesign-Screen.png",
+    year: "2026",
+    tags: ["Product Design", "UI", "Frontend", "Design System", "Claude Code"],
+    title: {
+      pt: "Duo AI — Redesign do Consumidor",
+      en: "Duo AI — Consumer Redesign",
+    },
+    description: {
+      pt: "Redesign e implementação das principais superfícies do consumidor no Duo AI — sign-in, agents, header, sidebar e light mode — levadas do Figma ao código usando Claude Code.",
+      en: "Redesign and implementation of the main consumer surfaces in Duo AI — sign-in, agents, header, sidebar, and light mode — taken from Figma to code using Claude Code.",
+    },
+    context: {
+      pt: "O Duo AI é uma plataforma onde creators constroem e vendem agentes de IA (DUOs) para suas audiências. A visão do creator (Studio) já tinha recebido bastante investimento de design — mas a visão do consumidor, que é onde o aluno passa 90% do tempo, estava defasada: padrões inconsistentes, hierarquia confusa, light mode quebrado em vários pontos e uma sensação geral de \"produto interno\" em vez de \"produto pronto pro mercado\".\n\nAntes do lançamento público, decidimos elevar o craft dessa camada inteira.",
+      en: "Duo AI is a platform where creators build and sell AI agents (DUOs) to their audiences. The creator side (Studio) had already received significant design investment — but the consumer side, where the buyer spends 90% of their time, was lagging: inconsistent patterns, confusing hierarchy, broken light mode in several places, and an overall \"internal tool\" feel instead of \"market-ready product.\"\n\nBefore the public launch, we decided to raise the craft bar across the entire layer.",
+    },
+    role: {
+      pt: "Product Designer responsável pelo redesign end-to-end das superfícies de consumo: decisões de UX, design no Figma e implementação direta no código (Next.js + Tailwind) usando Claude Code.\n\nEscopo: sign-in (split-screen no desktop, progressive disclosure no mobile), Agents page (cards redesenhados, paginação no desktop, scroll horizontal no mobile), header (AppPageLayout com avatar centralizado), sidebar (três seções: Meus DUOs, Salas, Conversas) e migração completa do light mode para tokens semânticos. Pendentes próximas: chat, signup, forgot-password, variantes Trial/Expired do AgentCard e variante \"Chat\" do header.",
+      en: "Product Designer responsible for the end-to-end redesign of the consumer surfaces: UX decisions, Figma design, and direct implementation in code (Next.js + Tailwind) using Claude Code.\n\nScope: sign-in (split-screen on desktop, progressive disclosure on mobile), Agents page (redesigned cards, desktop pagination, horizontal scroll on mobile), header (AppPageLayout with centered avatar), sidebar (three sections: My DUOs, Rooms, Conversations), and full light mode migration to semantic tokens. Upcoming: chat, signup, forgot-password, Trial/Expired AgentCard variants, and a \"Chat\" header variant.",
+    },
+    process: {
+      pt: "**Figma como fonte da verdade.** Estruturei o file no Figma como referência única. Toda decisão de UI tinha que existir lá antes de virar código — isso evitou retrabalho e me deu um lugar pra discutir trade-offs visuais sem ruído de implementação.\n\n**Implementação com Claude Code.** Como UX Designer com nível iniciante em código, normalmente esse tipo de redesign exigiria handoff pra um time de engenharia e seria spread em várias sprints. Com Claude Code, eu mesmo levei tudo do Figma ao PR. O fluxo virou: apresento a tela do Figma e o contexto → Claude pesquisa o codebase e devolve um plano de mudanças → eu aprovo (ou ajusto) o plano → implementação acontece em ciclos curtos, com verificação visual minha entre cada fase. Não é \"vibe coding\". É design com loop fechado entre intenção, decisão e execução — sem perder controle do produto.\n\n**Design system como guard-rail.** Um aprendizado caro do projeto: na primeira passada da sidebar e dos AgentCards, usamos cores fixas (stone-85, stone-98). Funcionou no dark mode, quebrou no light. Tivemos que refazer trocando tudo por tokens semânticos (background-tint-02, text-text-01, border-border-01). Esse erro virou regra: nada de cor fixa em componente — sempre token semântico que adapta entre temas.\n\n**O que aprendi trabalhando com Claude Code como Product Designer.** A pesquisa de código vem antes da implementação — forcei Claude a sempre ler arquivos completos e mapear o que existe antes de propor mudança, o que eliminou 80% das soluções genéricas. Plano antes de PR — toda task grande começa com um documento em .docs/Spec.md, que eu reviso e aprovo antes da implementação. Memória é alavanca — feedbacks recorrentes (como o de tokens semânticos) ficam numa camada persistente, e próximos projetos começam com esse contexto carregado. Eu continuo sendo o Product Designer; Claude implementa, mas as decisões de hierarquia, tom, fluxo e prioridade são minhas. A ferramenta amplifica — não substitui — o julgamento de design.",
+      en: "**Figma as source of truth.** I structured the Figma file as the single reference. Every UI decision had to exist there before becoming code — this avoided rework and gave me a place to discuss visual trade-offs without implementation noise.\n\n**Implementation with Claude Code.** As a UX Designer with beginner-level coding skills, this kind of redesign would normally require handoff to an engineering team and be spread across multiple sprints. With Claude Code, I took everything from Figma to PR myself. The flow became: I present the Figma screen and context → Claude researches the codebase and returns a change plan → I approve (or adjust) the plan → implementation happens in short cycles, with my visual verification between each phase. This isn't \"vibe coding.\" It's design with a closed loop between intent, decision, and execution — without losing control of the product.\n\n**Design system as guard-rail.** An expensive lesson: on the first pass of the sidebar and AgentCards, we used hardcoded colors (stone-85, stone-98). It worked in dark mode, broke in light mode. We had to redo it all using semantic tokens (background-tint-02, text-text-01, border-border-01). That mistake became a rule: no hardcoded colors in components — always semantic tokens that adapt between themes.\n\n**What I learned working with Claude Code as a Product Designer.** Code research comes before implementation — I forced Claude to always read full files and map what exists before proposing changes, which eliminated 80% of generic solutions. Plan before PR — every large task starts with a .docs/Spec.md document that I review and approve before implementation. Memory is leverage — recurring feedback (like the semantic tokens lesson) lives in a persistent layer, and future projects start with that context loaded. I'm still the Product Designer; Claude implements, but the decisions on hierarchy, tone, flow, and priority are mine. The tool amplifies — doesn't replace — design judgment.",
+    },
+    decisions: {
+      pt: "1. **Sign-in mobile com progressive disclosure**: no mobile, o formulário de e-mail/senha fica oculto por trás de um CTA secundário (\"ou entre com e-mail\"). O Google OAuth recebe o destaque primário. A hipótese: a maioria dos usuários da audiência dos creators já está logada no Google, e mostrar 4 campos de uma vez aumenta fricção sem aumentar conversão.\n\n2. **Sidebar reorganizada em três planos mentais**: em vez de listar tudo plano, separei em \"Meus DUOs\" (o que eu comprei), \"Salas\" (onde eu participo) e \"Conversas\" (histórico). Espelha como o usuário pensa, não como o backend modela.\n\n3. **Header centralizado com avatar como âncora**: o avatar do DUO atual fica no centro do header, não no canto. É a peça mais importante da tela em qualquer momento — onde o usuário está conversando, com quem, em qual contexto. Tirar isso da periferia mudou a sensação do produto.\n\n4. **Tokens semânticos como contrato do design system**: depois do incidente das cores fixas, qualquer cor em componente passou a ser obrigatoriamente token semântico. Isso virou parte da memória do projeto, não um \"a gente tenta lembrar\" — o que destravou o light mode de toda a experiência sem precisar refazer a cada nova tela.",
+      en: "1. **Mobile sign-in with progressive disclosure**: on mobile, the email/password form is hidden behind a secondary CTA (\"or sign in with email\"). Google OAuth gets primary focus. The hypothesis: most users in the creators' audiences are already logged into Google, and showing 4 fields upfront adds friction without lifting conversion.\n\n2. **Sidebar reorganized into three mental layers**: instead of a flat list, I split it into \"My DUOs\" (what I bought), \"Rooms\" (where I participate), and \"Conversations\" (history). Mirrors how the user thinks, not how the backend models.\n\n3. **Centered header with avatar as anchor**: the current DUO's avatar sits at the center of the header, not the corner. It's the most important piece of the screen at any moment — where the user is talking, with whom, in what context. Pulling it out of the periphery changed how the product feels.\n\n4. **Semantic tokens as design system contract**: after the hardcoded color incident, any color in a component became required to be a semantic token. This became part of the project's memory, not a \"we'll try to remember\" — which unlocked light mode across the entire experience without redoing it on every new screen.",
+    },
+    results: {
+      pt: "- Cinco superfícies de consumo redesenhadas e implementadas em produção (sign-in, agents, header, sidebar, light mode)\n- Light mode funcional em toda a experiência via tokens semânticos\n- Design system consistente, com padrões prontos pra serem replicados nas próximas telas (chat, signup, variantes do AgentCard)\n- Provou que um Product Designer com nível técnico iniciante consegue, com o setup certo, levar um redesign completo do Figma ao código mantendo qualidade de craft e velocidade de iteração",
+      en: "- Five consumer surfaces redesigned and shipped to production (sign-in, agents, header, sidebar, light mode)\n- Light mode working across the entire experience via semantic tokens\n- Consistent design system, with patterns ready to be replicated on upcoming screens (chat, signup, AgentCard variants)\n- Proved that a Product Designer with beginner-level coding skills can, with the right setup, take a full redesign from Figma to code while keeping craft quality and iteration speed",
+    },
+    images: [
+      "/projects/Duo-ai-buyer-redesign/DuoAI-Consumer-Redesign-Screen.png",
+      "/projects/Duo-ai-buyer-redesign/DuoAI-Consumer-Redesign-Process.png",
+      "/projects/Duo-ai-buyer-redesign/DuoAI-Consumer-Redesign-Components.png",
+    ],
+  },
+  {
+    slug: "hotmart-club-jtbd",
+    category: "research",
+    coverImage: "/projects/Hotmart-new-club/2.png",
+    year: "2024",
+    tags: ["UX Research", "Jobs To Be Done", "Journey Mapping", "Service Design"],
+    title: {
+      pt: "Hotmart Club — Jornada do Criador (JTBD)",
+      en: "Hotmart Club — Creator Journey (JTBD)",
+    },
+    description: {
+      pt: "Mapeei a jornada completa do criador no Hotmart Club usando Jobs To Be Done. O objetivo: identificar lacunas de experiência e oportunidades de melhoria em toda a plataforma (30M+ usuários).",
+      en: "Mapped the complete Hotmart Club creator journey using Jobs To Be Done methodology. The goal: identify experience gaps and improvement opportunities across the entire platform (30M+ users).",
+    },
+    context: {
+      pt: "O Hotmart Club é a plataforma onde criadores hospedam e entregam seus produtos digitais — cursos, comunidades, mentorias — para uma base de 30M+ usuários. Ao longo dos anos, a plataforma cresceu adicionando funcionalidades de forma incremental, sem uma visão consolidada do que o criador realmente precisa fazer ao longo do ciclo de vida do seu produto.\n\nO desafio: criar um modelo único que descreve a experiência inteira do criador, do primeiro contato com a Hotmart até a operação madura — e que servisse de base para discoveries, priorização de roadmap e alinhamento entre times.",
+      en: "Hotmart Club is the platform where creators host and deliver their digital products — courses, communities, mentorships — to a 30M+ user base. Over the years, the platform grew by adding features incrementally, without a consolidated view of what the creator actually needs to do across their product lifecycle.\n\nThe challenge: build a single model describing the entire creator experience, from first contact with Hotmart to mature operations — one that could serve as a foundation for discoveries, roadmap prioritization, and cross-team alignment.",
+    },
+    role: {
+      pt: "UX Researcher responsável por conceber, estruturar e entregar o mapeamento end-to-end. Trabalhei de forma transversal com Product Managers e Product Designers para garantir que o output fosse acionável — não um artefato bonito que ninguém usa.",
+      en: "UX Researcher responsible for conceiving, structuring, and delivering the end-to-end mapping. I worked cross-functionally with Product Managers and Product Designers to make sure the output was actionable — not a beautiful artifact nobody uses.",
+    },
+    process: {
+      pt: "**Síntese de pesquisa.** Analisei dados qualitativos de entrevistas com criadores documentadas no Dovetail, extraindo padrões de comportamento, necessidades recorrentes e momentos de fricção.\n\n**Auditoria da plataforma.** Naveguei e auditei mão na massa cada seção da plataforma — não só as áreas \"do meu time\". A auditoria expôs inconsistências entre o que os usuários descreviam e o que a plataforma de fato oferecia.\n\n**Mapeamento JTBD.** Estruturei a experiência completa em macro jobs (o que o criador está tentando alcançar) e micro tasks (os passos concretos para chegar lá). Para cada macro job, mapeei subfluxos com pontos de decisão e caminhos alternativos.\n\nO output não é um diagrama estático — é um sistema de fluxos escalável, projetado para ser estendido conforme a plataforma evolui.",
+      en: "**Research synthesis.** Analyzed qualitative data from user interviews documented in Dovetail, extracting behavioral patterns, recurring needs, and friction moments.\n\n**Platform audit.** Navigated and audited every section of the platform hands-on — not just \"my team's\" areas. The audit exposed mismatches between what users described and what the platform actually offered.\n\n**JTBD mapping.** Structured the full experience into macro jobs (what the creator is trying to achieve) and micro tasks (the concrete steps to get there). For each macro job, I mapped subflows with decision points and alternate paths.\n\nThe output isn't a static diagram — it's a scalable flow system designed to be extended as the platform evolves.",
+    },
+    decisions: {
+      pt: "**Macro jobs identificados:**\n\n1. **Get to Know Hotmart** — primeiro contato, entendimento da proposta de valor, criação de conta\n2. **Produce and Format Content** — criação, edição e estruturação do conteúdo do produto\n3. **Communicate with Audience** — engajamento, comunidade, suporte direto\n4. **Sell / Manage Sales** — pricing, checkout, afiliados, conversão\n5. **Deliver and Provide Support** — entrega do conteúdo, atendimento, retenção\n6. **Manage Operations** — analytics, finanças, equipe, decisões estratégicas\n\nEssa estrutura virou linguagem comum entre os times de produto. Cada macro job tem dono, métrica e roadmap próprios — mas todos se reportam à mesma jornada.",
+      en: "**Macro jobs identified:**\n\n1. **Get to Know Hotmart** — first contact, value proposition understanding, account creation\n2. **Produce and Format Content** — product content creation, editing, structuring\n3. **Communicate with Audience** — engagement, community, direct support\n4. **Sell / Manage Sales** — pricing, checkout, affiliates, conversion\n5. **Deliver and Provide Support** — content delivery, customer service, retention\n6. **Manage Operations** — analytics, finance, team, strategic decisions\n\nThis structure became shared language across product teams. Each macro job has its own owner, metric, and roadmap — but all map back to the same journey.",
+    },
+    results: {
+      pt: "- Mapa de jornada de alto nível com estágios de ciclo de vida\n- Subfluxos detalhados com pontos de decisão e caminhos alternativos\n- Quebra em micro steps para cada macro job\n- Lacunas anotadas onde a experiência quebrava\n- Sistema de fluxos escalável adotado como referência por múltiplos times de produto na priorização de roadmap",
+      en: "- High-level journey map with lifecycle stages\n- Detailed subflows with decision points and alternate paths\n- Micro steps breakdown for each macro job\n- Annotated gaps where the experience broke down\n- Scalable flow system adopted as a reference by multiple product teams for roadmap prioritization",
+    },
+    images: [
+      "/projects/Hotmart-new-club/2.png",
+      "/projects/Hotmart-new-club/3.png",
+      "/projects/Hotmart-new-club/Backup - Micro Steps.jpg",
+      "/projects/Hotmart-new-club/Backup - SESSION + ONBOARDING.jpg",
+    ],
+  },
+  {
+    slug: "duo-ai-creator-studio",
     category: "product",
     coverImage: "/projects/duo-ai/duo-ai-admin.png",
     year: "2025 – Present",
     tags: ["Product Design", "AI", "Conversational UX"],
     title: {
-      pt: "Duo AI",
-      en: "Duo AI",
+      pt: "Duo AI — Creator Studio",
+      en: "Duo AI — Creator Studio",
     },
     description: {
       pt: "Plataforma onde qualquer pessoa cria assistentes de IA personalizados. Projetei o Studio — a ferramenta de criação — e a experiência de chat do usuário final.",
@@ -175,6 +256,48 @@ export const projects: Project[] = [
     images: [
       "/projects/repositorio-pesquisa-automatizado/repositorio.png",
       "/projects/repositorio-pesquisa-automatizado/processo.png",
+    ],
+  },
+  {
+    slug: "sonho-grande",
+    category: "design",
+    coverImage: "/projects/Sonho-grande/3f67ce225722305.682379b97a7e0.png",
+    year: "2022",
+    tags: ["Product Design", "Mobile", "Data Visualization", "Social Impact"],
+    title: {
+      pt: "Sonho Grande — Prevenção de Abandono Escolar",
+      en: "Sonho Grande — School Dropout Prevention",
+    },
+    description: {
+      pt: "App web e mobile para o Instituto Sonho Grande: ajuda gestores de escolas públicas e secretarias de educação a monitorar e agir contra o abandono escolar, com visualização de dados de risco e ações concretas de acompanhamento.",
+      en: "Web and mobile app for Instituto Sonho Grande: helps public school managers and education departments track and prevent school dropout, with risk data visualization and concrete follow-up actions.",
+    },
+    context: {
+      pt: "O Instituto Sonho Grande atua para reduzir o abandono escolar nas escolas públicas brasileiras. O desafio era criar uma ferramenta que transformasse dados complexos sobre risco de evasão em ações concretas — algo que gestores escolares e secretarias de educação pudessem usar no dia a dia, sem treinamento técnico.\n\nA tela tinha que responder duas perguntas em segundos: \"quais alunos estão em risco?\" e \"o que eu faço a respeito?\".",
+      en: "Instituto Sonho Grande works to reduce school dropout across Brazilian public schools. The challenge was building a tool that turned complex dropout risk data into concrete action — something school managers and education departments could use day-to-day, without technical training.\n\nThe interface had to answer two questions in seconds: \"which students are at risk?\" and \"what do I do about it?\".",
+    },
+    role: {
+      pt: "UX/UI Designer responsável pela experiência completa: pesquisa, arquitetura de informação, fluxos, wireframes, protótipo de alta fidelidade, sistema de componentes e visualização de dados.\n\nEscopo: três perfis de usuário (Assessores, Secretarias de Educação, Equipe Escolar), 20+ telas mobile, dashboard de risco em múltiplos níveis (Brasil → Escola → Aluno) e fluxo de registro de ações (ligação familiar, visita domiciliar, encaminhamento).",
+      en: "UX/UI Designer responsible for the full experience: research, information architecture, flows, wireframes, high-fidelity prototype, component system, and data visualization.\n\nScope: three user roles (Advisors, Education Departments, School Staff), 20+ mobile screens, multi-level risk dashboard (Brazil → School → Student), and an action registration flow (family call, home visit, referral).",
+    },
+    process: {
+      pt: "Segui um processo em 4 fases:\n\n**1. Understand** — Reuniões de alinhamento com os donos do projeto e profissionais da educação para definir objetivos e identificar dores principais.\n\n**2. Define** — Mapeamento de necessidades primárias e secundárias dos usuários. Construção e validação do sitemap para guiar a navegação entre os três perfis.\n\n**3. Design** — Wireframes em baixa fidelidade explorando layout e usabilidade, com cada passo alinhado aos fluxos de usuário definidos.\n\n**4. Deliver** — Protótipos em alta fidelidade e interações projetadas para suportar visualização de dados e tomada de decisão rápida.",
+      en: "I followed a 4-phase process:\n\n**1. Understand** — Alignment meetings with project owners and education professionals to define goals and identify key pain points.\n\n**2. Define** — Mapped primary and secondary user needs. Built and validated the sitemap to guide navigation across the three user roles.\n\n**3. Design** — Low-fidelity wireframes to explore layout and usability, aligning each step with the defined user flows.\n\n**4. Deliver** — High-fidelity prototypes and interactions designed to support data visualization and quick decision-making.",
+    },
+    decisions: {
+      pt: "1. **Visão hierárquica de dados (Brasil → Escola → Aluno)**: o gestor entra pela visão macro e desce até o aluno individual. Cada nível responde uma pergunta diferente — quais regiões precisam de atenção, quais escolas dentro delas, quais alunos dentro de cada escola. Sem isso, a base de dados ficaria opressiva.\n\n2. **Ação como cidadã de primeira classe**: cada aluno em risco tem uma ação primária visível (NOVA AÇÃO) — não enterrada em um menu. O fluxo de registrar uma ligação, visita ou encaminhamento foi otimizado para acontecer em segundos, não minutos.\n\n3. **Categorização visual por status de risco**: cores semânticas (Em Risco, Sem Ação, Com Ação, Recuperados) tornam o status reconhecível sem leitura. Isso é crítico para gestores escaneando listas com centenas de alunos.\n\n4. **Três perfis, mesma base de componentes**: Assessores, Secretarias e Equipe Escolar têm necessidades diferentes mas compartilham a mesma linguagem visual e padrões de interação. Reduz custo de aprendizado quando alguém muda de papel.",
+      en: "1. **Hierarchical data view (Brazil → School → Student)**: managers enter at the macro view and drill down to individual students. Each level answers a different question — which regions need attention, which schools within them, which students within each school. Without this, the data would be overwhelming.\n\n2. **Action as a first-class citizen**: every at-risk student has a primary visible action (NEW ACTION) — not buried in a menu. The flow to register a call, visit, or referral was optimized to take seconds, not minutes.\n\n3. **Visual categorization by risk status**: semantic colors (At Risk, No Action, With Action, Recovered) make status recognizable without reading. Critical for managers scanning lists of hundreds of students.\n\n4. **Three roles, one component base**: Advisors, Education Departments, and School Staff have different needs but share the same visual language and interaction patterns. Reduces learning cost when someone switches roles.",
+    },
+    results: {
+      pt: "- App web e mobile completo com 20+ telas em alta fidelidade\n- Sistema de componentes e visualização de dados consistente entre três perfis de usuário\n- Fluxo de ação otimizado para registrar intervenções em segundos\n- Dashboard hierárquico que escala de visão nacional a aluno individual\n- Projeto com impacto social direto: ferramenta para reduzir abandono escolar em escolas públicas brasileiras",
+      en: "- Complete web and mobile app with 20+ high-fidelity screens\n- Consistent component system and data visualization across three user roles\n- Action flow optimized to register interventions in seconds\n- Hierarchical dashboard scaling from national view down to individual student\n- Project with direct social impact: a tool to reduce dropout in Brazilian public schools",
+    },
+    images: [
+      "/projects/Sonho-grande/3f67ce225722305.682379b97a7e0.png",
+      "/projects/Sonho-grande/07fb35225722305.682379b97afd5.png",
+      "/projects/Sonho-grande/b59d1e225722305.682379b97ee57.png",
+      "/projects/Sonho-grande/f56350225722305.682379b97b64f.png",
+      "/projects/Sonho-grande/d86954225722305.682379b97cdb7.png",
     ],
   },
   {
