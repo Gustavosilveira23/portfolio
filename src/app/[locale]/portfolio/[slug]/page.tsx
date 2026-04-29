@@ -4,6 +4,10 @@ import { projects, getProjectBySlug } from "@/content/projects";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 const caseMeta: Record<string, { title: string; description: string }> = {
+  "duo-ai-buyer-redesign": {
+    title: "Duo AI — Consumer Redesign",
+    description: "Redesign and implementation of the main consumer surfaces in Duo AI — sign-in, agents, header, sidebar, and light mode — taken from Figma to code using Claude Code.",
+  },
   "raio-x-creator": {
     title: "Raio X Creator — AI Analytics for Content Creators",
     description: "AI-powered analytics platform for content creators. Case study covering product design, UX research, AI integration, and frontend development.",
