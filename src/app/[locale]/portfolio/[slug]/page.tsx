@@ -41,15 +41,32 @@ const caseMeta: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const meta = caseMeta[slug];
   if (!meta) return {};
+  const path = locale === "pt" ? `/pt/portfolio/${slug}` : `/portfolio/${slug}`;
   return {
     title: meta.title,
     description: meta.description,
+    alternates: {
+      canonical: path,
+      languages: {
+        "en": `/portfolio/${slug}`,
+        "pt-BR": `/pt/portfolio/${slug}`,
+      },
+    },
     openGraph: {
+      type: "article",
+      title: `${meta.title} | Gustavo Silveira`,
+      description: meta.description,
+      url: path,
+      locale: locale === "pt" ? "pt_BR" : "en_US",
+      siteName: "Gustavo Silveira",
+    },
+    twitter: {
+      card: "summary_large_image",
       title: `${meta.title} | Gustavo Silveira`,
       description: meta.description,
     },
@@ -65,7 +82,7 @@ export default async function CaseStudyPage({
 }: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const project = getProjectBySlug(slug);
 
   if (!project) notFound();
@@ -74,5 +91,41 @@ export default async function CaseStudyPage({
   const prev = idx > 0 ? projects[idx - 1] : null;
   const next = idx < projects.length - 1 ? projects[idx + 1] : null;
 
-  return <CaseStudyContent project={project} prev={prev} next={next} />;
+  const lang = locale === "pt" ? "pt" : "en";
+  const baseUrl = "https://gustavosilveira.com";
+  const pagePath = locale === "pt" ? `/pt/portfolio/${slug}` : `/portfolio/${slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title[lang],
+    description: project.description[lang],
+    url: `${baseUrl}${pagePath}`,
+    inLanguage: lang === "pt" ? "pt-BR" : "en",
+    dateCreated: project.year,
+    keywords: project.tags.join(", "),
+    image: project.coverImage
+      ? `${baseUrl}${project.coverImage}`
+      : undefined,
+    author: {
+      "@type": "Person",
+      name: "Gustavo Silveira",
+      url: baseUrl,
+    },
+    creator: {
+      "@type": "Person",
+      name: "Gustavo Silveira",
+      url: baseUrl,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <CaseStudyContent project={project} prev={prev} next={next} />
+    </>
+  );
 }

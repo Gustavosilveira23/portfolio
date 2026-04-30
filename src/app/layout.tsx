@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -96,8 +97,19 @@ export default function RootLayout({
       "Conversational AI",
     ],
     worksFor: [
-      { "@type": "Organization", name: "Raio X Creator" },
       { "@type": "Organization", name: "Duo AI" },
+    ],
+    makesOffer: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Product Design Consulting",
+          serviceType: "AI Product Design, SaaS UX, Design Systems, User Research",
+        },
+        availability: "https://schema.org/InStock",
+        areaServed: "Global",
+      },
     ],
     alumniOf: {
       "@type": "EducationalOrganization",
@@ -122,6 +134,7 @@ export default function RootLayout({
         />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-NDLMFR0BNC" />
     </html>
   );
 }
