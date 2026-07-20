@@ -169,3 +169,57 @@
   width: 100%;
   opacity: 0.3;
 }
+
+/* Lenis smooth scroll — estas regras só valem quando o Lenis está montado
+   (ele adiciona a classe .lenis no <html>). Enquanto o SmoothScroll não é
+   usado, nada aqui afeta o site. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Cursor customizado — esconde o cursor nativo quando ativo */
+html.cursor-none,
+html.cursor-none * {
+  cursor: none !important;
+}
+
+/* Seções com tema claro — inverte o fundo escuro do site.
+   Redefine os tokens de cor pra valores claros, então todos os componentes
+   dentro (bg-surface, text-foreground, border, etc.) invertem sozinhos. */
+.section-light {
+  --background: oklch(0.955 0.008 83); /* bege clarinho, tom Google Labs */
+  --foreground: oklch(0.15 0 0);
+  --surface-1: oklch(0.97 0 0);
+  --surface-2: oklch(0.95 0 0);
+  --surface-3: oklch(0.915 0 0);
+  --card: oklch(0.95 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.2 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.44 0 0);
+  --accent: oklch(0.93 0 0);
+  --accent-foreground: oklch(0.2 0 0);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 15%);
+  --ring: oklch(0.5 0 0);
+  background-color: var(--background);
+  color: var(--foreground);
+}

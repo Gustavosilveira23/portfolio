@@ -5,6 +5,7 @@ import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { useState, useEffect } from "react";
 import { Menu, X, Linkedin, Github } from "lucide-react";
+import { Magnetic } from "./magnetic";
 
 export function Nav() {
   const t = useTranslations("nav");
@@ -14,6 +15,7 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [overLight, setOverLight] = useState(false);
 
   const isHome = pathname === "/";
 
@@ -51,7 +53,24 @@ export function Nav() {
     function handleScroll() {
       setScrolled(window.scrollY > 60);
 
-      if (!isHome) return;
+      if (!isHome) {
+        setOverLight(false);
+        return;
+      }
+
+      // A nav está sobre uma seção de fundo claro? (pra inverter o texto dela)
+      let light = false;
+      for (const id of ["services", "portfolio"]) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 60 && rect.bottom >= 40) {
+            light = true;
+            break;
+          }
+        }
+      }
+      setOverLight(light);
 
       // Detect active section
       const sectionIds = sections.map((s) => s.id);
@@ -74,6 +93,8 @@ export function Nav() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-300 ${
+        overLight ? "section-light" : ""
+      } ${
         scrolled
           ? "bg-background/85 backdrop-blur-md"
           : "bg-transparent backdrop-blur-none"
@@ -125,22 +146,26 @@ export function Nav() {
           {/* Social icons */}
           <span className="inline-block w-px h-3 bg-foreground/25" />
           <div className="flex items-center gap-3">
-            <a
-              href="https://www.linkedin.com/in/gustavosilveira23/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
-            >
-              <Linkedin size={14} />
-            </a>
-            <a
-              href="https://github.com/Gustavosilveira23"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
-            >
-              <Github size={14} />
-            </a>
+            <Magnetic strength={0.6}>
+              <a
+                href="https://www.linkedin.com/in/gustavosilveira23/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+              >
+                <Linkedin size={14} />
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.6}>
+              <a
+                href="https://github.com/Gustavosilveira23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+              >
+                <Github size={14} />
+              </a>
+            </Magnetic>
           </div>
         </div>
 
