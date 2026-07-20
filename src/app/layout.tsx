@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
+    default: "Gustavo Silveira: Senior Product Designer · AI · SaaS · Startups",
     template: "%s | Gustavo Silveira",
   },
   description:
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: "pt_BR",
     siteName: "Gustavo Silveira",
-    title: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
+    title: "Gustavo Silveira: Senior Product Designer · AI · SaaS · Startups",
     description:
       "I design AI products people actually understand. Senior Product Designer specializing in AI interfaces, SaaS, and early-stage products.",
     url: "https://gustavosilveira.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gustavo Silveira — Senior Product Designer · AI · SaaS · Startups",
+    title: "Gustavo Silveira: Senior Product Designer · AI · SaaS · Startups",
     description:
       "I design AI products people actually understand. Available for freelance and contract work.",
   },

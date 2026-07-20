@@ -385,7 +385,7 @@ export function CaseStudyContent({
                 <ArrowUp size={16} className="text-primary-foreground" />
               </a>
               <p className="text-sm text-primary/40">
-                &copy; G.S. &mdash; 2026
+                &copy; G.S. &middot; 2026
               </p>
             </div>
           </div>

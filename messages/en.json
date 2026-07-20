@@ -9,12 +9,19 @@
   },
   "hero": {
     "headline": "I design AI products people actually understand.",
-    "subtitle": "Senior Product Designer specializing in AI interfaces, SaaS, and early-stage products. From research to shipped screens — I turn complex problems into clear, usable experiences.",
     "tw_prefix": "I'm a ",
     "tw_designer": "designer.",
     "tw_researcher": "researcher.",
     "tw_builder": "builder.",
-    "tw_curious": "curious mind."
+    "tw_curious": "curious mind.",
+    "egg": "Hey, that's me, nice to meet you!"
+  },
+  "intro": {
+    "greeting": "Hey!",
+    "lead": "I'm Gustavo, a product designer based in Uberlândia, Brazil. Currently Founding Designer at Duo AI.",
+    "desc_1": "Senior Product Designer specializing in AI interfaces, SaaS, and early-stage products. From research to shipped screens, I make the complex easy to use.",
+    "desc_2": "8+ years designing digital products, from early-stage startups to companies with millions of users.",
+    "cta": "Let's talk"
   },
   "home": {
     "featured_title": "Featured Work",
@@ -29,8 +36,8 @@
     "label": "WHO I AM",
     "title": "Behind the screens",
     "subtitle": "The side that doesn't fit in a case study.",
-    "bio_1": "I started wanting to understand why things work — or don't. That led me to UX. Today I design, research, and build. Not necessarily in that order.",
-    "bio_2": "I've spent 8+ years designing digital products — from early-stage startups to companies with millions of users. I care about systems that make sense and processes nobody needs to explain twice. My job is to make the complex feel obvious, and sometimes make the simple feel beautiful.",
+    "bio_1": "I started wanting to understand why things work, or don't. That led me to UX. Today I design, research, and build. Not necessarily in that order.",
+    "bio_2": "I've spent 8+ years designing digital products, from early-stage startups to companies with millions of users. I care about systems that make sense and processes nobody needs to explain twice. My job is to make the complex feel obvious, and sometimes make the simple feel beautiful.",
     "based_in": "Uberlândia, Brazil (UTC-3)",
     "based_in_label": "BASED IN",
     "languages": "Portuguese (native), English (fluent)",
@@ -55,7 +62,7 @@
   },
   "process": {
     "title": "My Process",
-    "subtitle": "From research to deploy — how I work.",
+    "subtitle": "From research to deploy: how I work.",
     "step1_title": "Research",
     "step1_desc": "Understand the real problem: interviews, data, benchmarks. Every decision starts with evidence.",
     "step2_title": "Strategy",
@@ -92,22 +99,7 @@
   },
   "services": {
     "title": "Services",
-    "label": "WHAT I DO",
-    "ai_title": "AI Product Design",
-    "ai_desc": "Get an AI-powered product that users actually trust. Smart features that feel natural, not forced — from LLM integrations to conversational interfaces, designed so your users stay in control.",
-    "ai_tags": "AI-native interfaces, Conversational UX, Prompt design, Human-AI interaction",
-    "uxui_title": "Product Design, End to End",
-    "uxui_desc": "Turn your complex product into something users actually get. From early discovery to polished interfaces — your product gets the full cycle: research, design, prototyping, and testing.",
-    "uxui_tags": "End-to-end design, Complex flows, Prototyping, Cross-platform",
-    "research_title": "Research & Product Strategy",
-    "research_desc": "Stop guessing what your users need. Get clear, actionable insights from real research — qualitative and quantitative — so your team makes decisions based on evidence, not assumptions.",
-    "research_tags": "User research, Product strategy, Synthesis, Data-informed decisions",
-    "d2c_title": "Design to Code",
-    "d2c_desc": "Go from design to a working product faster. Get a functional prototype or production frontend without waiting on a dev team — straight from Figma to deployed code.",
-    "d2c_tags": "Figma to code, Claude Code, Rapid prototyping, Deploy",
-    "ds_title": "Design Systems & Ops",
-    "ds_desc": "Scale your product's design without losing quality. Get a component library, token system, and governance model that keeps your team consistent and shipping faster.",
-    "ds_tags": "Design tokens, Component architecture, Governance, Documentation"
+    "label": "WHAT I DO"
   },
   "creations": {
     "label": "OPEN SOURCE & CONTENT",
@@ -115,13 +107,13 @@
     "subtitle": "Tools, frameworks, and ideas I share with the community.",
     "item1_title": "Claude Design Skills",
     "item1_type": "Open Source",
-    "item1_desc": "A skill that turns Claude Code into a design partner — UX strategy, UI craft, design systems. All in an open repository.",
+    "item1_desc": "A skill that makes Claude Code work like a design partner: UX strategy, UI craft, design systems. All in an open repository.",
     "item2_title": "Benchmarking Guide",
     "item2_type": "Article",
-    "item2_desc": "A practical framework for mapping, comparing, and extracting insights from competitors in a structured way.",
+    "item2_desc": "A practical framework for mapping, comparing, and extracting insights from competitors.",
     "item3_title": "Research with AI",
     "item3_type": "Article",
-    "item3_desc": "How to integrate AI into the UX Research process — where it actually helps in the user research cycle."
+    "item3_desc": "How to integrate AI into the UX Research process, where it actually helps in the user research cycle."
   },
   "footer": {
     "rights": "All rights reserved.",

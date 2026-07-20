@@ -9,12 +9,19 @@
   },
   "hero": {
     "headline": "Eu projeto produtos de IA que as pessoas realmente entendem.",
-    "subtitle": "Senior Product Designer especializado em interfaces de IA, SaaS e produtos early-stage. Da pesquisa ao deploy — transformo problemas complexos em experiências claras e usáveis.",
     "tw_prefix": "Sou ",
     "tw_designer": "designer.",
     "tw_researcher": "pesquisador.",
     "tw_builder": "builder.",
-    "tw_curious": "curioso."
+    "tw_curious": "curioso.",
+    "egg": "Opa, esse sou eu, muito prazer!"
+  },
+  "intro": {
+    "greeting": "Oi!",
+    "lead": "Sou o Gustavo, designer de produto baseado em Uberlândia (MG). Hoje sou Founding Designer na Duo AI.",
+    "desc_1": "Senior Product Designer especializado em interfaces de IA, SaaS e produtos early-stage. Da pesquisa ao deploy, pego problemas complexos e entrego telas claras e fáceis de usar.",
+    "desc_2": "São mais de 8 anos projetando produtos digitais, de startups early-stage a empresas com milhões de usuários.",
+    "cta": "Vamos conversar"
   },
   "home": {
     "featured_title": "Projetos em Destaque",
@@ -29,8 +36,8 @@
     "label": "QUEM EU SOU",
     "title": "Por trás das telas",
     "subtitle": "O lado que não cabe em um case study.",
-    "bio_1": "Comecei querendo entender por que as coisas funcionam — ou não. Isso me trouxe pro UX. Hoje projeto, pesquiso e construo. Não necessariamente nessa ordem.",
-    "bio_2": "Tenho 8+ anos projetando produtos digitais — de startups early-stage a empresas com milhões de usuários. Gosto de sistemas que fazem sentido e de processos que ninguém precisa explicar duas vezes. Meu trabalho é fazer o complexo parecer óbvio, e às vezes o simples, bonito.",
+    "bio_1": "Comecei querendo entender por que as coisas funcionam, ou não. Isso me trouxe pro UX. Hoje projeto, pesquiso e construo. Não necessariamente nessa ordem.",
+    "bio_2": "Tenho 8+ anos projetando produtos digitais, de startups early-stage a empresas com milhões de usuários. Gosto de sistemas que fazem sentido e de processos que ninguém precisa explicar duas vezes. Meu trabalho é fazer o complexo parecer óbvio, e às vezes o simples, bonito.",
     "based_in": "Uberlândia, MG, Brasil (UTC-3)",
     "based_in_label": "MORA EM",
     "languages": "Português (nativo), Inglês (fluente)",
@@ -55,7 +62,7 @@
   },
   "process": {
     "title": "Meu Processo",
-    "subtitle": "Do research ao deploy — como eu trabalho.",
+    "subtitle": "Do research ao deploy: como eu trabalho.",
     "step1_title": "Pesquisa",
     "step1_desc": "Entendo o problema real: entrevistas, dados, benchmarks. Toda decisão começa com evidência.",
     "step2_title": "Estratégia",
@@ -92,22 +99,7 @@
   },
   "services": {
     "title": "Serviços",
-    "label": "O QUE EU FAÇO",
-    "ai_title": "AI Product Design",
-    "ai_desc": "Tenha um produto com IA que seus usuários realmente confiam. Features inteligentes que parecem naturais, não forçadas — de integrações com LLM a interfaces conversacionais, projetadas para o usuário manter o controle.",
-    "ai_tags": "Interfaces AI-native, UX conversacional, Prompt design, Interação humano-IA",
-    "uxui_title": "Product Design, End to End",
-    "uxui_desc": "Transforme seu produto complexo em algo que os usuários realmente entendem. Do discovery ao polish — seu produto recebe o ciclo completo: pesquisa, design, prototipação e testes.",
-    "uxui_tags": "Design end-to-end, Fluxos complexos, Prototipação, Cross-platform",
-    "research_title": "Research & Product Strategy",
-    "research_desc": "Pare de adivinhar o que seus usuários precisam. Tenha insights claros e acionáveis de pesquisa real — qualitativa e quantitativa — para que seu time decida com base em evidência, não em achismo.",
-    "research_tags": "Pesquisa com usuários, Estratégia de produto, Síntese, Decisões baseadas em dados",
-    "d2c_title": "Design to Code",
-    "d2c_desc": "Saia do design para um produto funcionando mais rápido. Tenha um protótipo funcional ou frontend em produção sem esperar por time de dev — direto do Figma ao código deployado.",
-    "d2c_tags": "Figma to code, Claude Code, Prototipação rápida, Deploy",
-    "ds_title": "Design Systems & Ops",
-    "ds_desc": "Escale o design do seu produto sem perder qualidade. Tenha biblioteca de componentes, sistema de tokens e modelo de governança que mantém seu time consistente e entregando mais rápido.",
-    "ds_tags": "Design tokens, Arquitetura de componentes, Governança, Documentação"
+    "label": "O QUE EU FAÇO"
   },
   "creations": {
     "label": "OPEN SOURCE & CONTEÚDO",
@@ -115,13 +107,13 @@
     "subtitle": "Ferramentas, frameworks e ideias que compartilho com a comunidade.",
     "item1_title": "Claude Design Skills",
     "item1_type": "Open Source",
-    "item1_desc": "Skill que transforma o Claude Code em um parceiro de design — UX strategy, UI craft, design systems. Tudo em um repositório aberto.",
+    "item1_desc": "Uma skill que faz o Claude Code trabalhar como parceiro de design: UX strategy, UI craft, design systems. Tudo em um repositório aberto.",
     "item2_title": "Guia de Benchmarking",
     "item2_type": "Artigo",
-    "item2_desc": "Framework prático para mapear, comparar e extrair insights de concorrentes de forma estruturada.",
+    "item2_desc": "Framework prático para mapear, comparar e extrair insights de concorrentes.",
     "item3_title": "Pesquisa com IA",
     "item3_type": "Artigo",
-    "item3_desc": "Como integrar IA no processo de UX Research — onde realmente ajuda no ciclo de pesquisa com usuários."
+    "item3_desc": "Como integrar IA no processo de UX Research, onde realmente ajuda no ciclo de pesquisa com usuários."
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
