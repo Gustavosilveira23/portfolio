@@ -9,11 +9,14 @@
  * Cada card usa flex-grow; no hover ele expande e os vizinhos da mesma coluna
  * retraem, mantendo o grid encaixado. A transição de flex-grow é animada.
  *
- * Frente = a dor do cliente (voz dele). Hover = como resolvo + CTA de agendar.
+ * Frente = a dor do cliente (voz dele). Verso = como resolvo + CTA de agendar.
+ * Desktop: revela no hover. Mobile: revela no toque (o card expande), com um
+ * "+" que pulsa sugerindo o clique e vira "×" quando aberto.
  */
 
+import { useState } from "react";
 import { useLocale } from "next-intl";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 
 const CALENDLY = "https://calendar.app.google/jvDs7YqaRTi9E2Wa8";
 
@@ -97,26 +100,45 @@ function Card({
     : "bg-white text-neutral-900 ring-1 ring-black/[0.05] shadow-[0_6px_18px_-12px_rgba(0,0,0,0.1)]";
   const label = dark ? "text-white/45" : "text-neutral-400";
 
+  // Mobile: toque abre/fecha (não existe hover). Desktop: hover controla, e o
+  // estado `open` é ignorado (as classes md: sobrepõem as sem prefixo).
+  const [open, setOpen] = useState(false);
+
   return (
     <div
-      className={`group relative min-h-[150px] overflow-hidden rounded-3xl transition-[flex-grow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:min-h-0 ${surface} ${grow}`}
+      onClick={() => setOpen((o) => !o)}
+      className={`group relative overflow-hidden rounded-3xl cursor-pointer transition-[flex-grow,min-height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:cursor-default md:min-h-0 ${
+        open ? "min-h-[320px]" : "min-h-[150px]"
+      } ${surface} ${grow}`}
     >
       {/* Frente — a dor do cliente */}
       <div className="flex h-full flex-col justify-between p-6">
-        <span className={`text-xs uppercase tracking-[1.5px] ${label}`}>
-          {job.service[locale]}
-        </span>
+        <div className="flex items-start justify-between gap-3">
+          <span className={`text-xs uppercase tracking-[1.5px] ${label}`}>
+            {job.service[locale]}
+          </span>
+          {/* Affordance de toque (só mobile): pulsa fechado, vira × ao abrir */}
+          <span
+            aria-hidden
+            className={`shrink-0 transition-transform duration-300 md:hidden ${
+              dark ? "text-white/40" : "text-neutral-400"
+            } ${open ? "rotate-45" : "animate-pulse"}`}
+          >
+            <Plus size={18} />
+          </span>
+        </div>
         <p className="max-w-md text-xl font-medium leading-snug md:text-2xl">
           {"“" + job.pain[locale] + "”"}
         </p>
       </div>
 
-      {/* Verso — solução + CTA (revela no hover) */}
-      <a
-        href={CALENDLY}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute inset-0 flex flex-col justify-between bg-neutral-900 p-6 text-white opacity-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-3 group-hover:translate-y-0 group-hover:opacity-100"
+      {/* Verso — solução + CTA. Desktop: revela no hover. Mobile: revela com `open`. */}
+      <div
+        className={`absolute inset-0 flex flex-col justify-between bg-neutral-900 p-6 text-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "translate-y-3 opacity-0 pointer-events-none"
+        } md:translate-y-3 md:opacity-0 md:pointer-events-none md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-hover:pointer-events-auto`}
       >
         <div>
           <span className="text-xs uppercase tracking-[1.5px] text-white/45">
@@ -126,13 +148,19 @@ function Card({
             {job.solution[locale]}
           </p>
         </div>
-        <span className="inline-flex items-center gap-2 text-sm font-medium">
+        <a
+          href={CALENDLY}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="inline-flex w-fit items-center gap-2 text-sm font-medium"
+        >
           {ctaLabel}
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30">
             <ArrowUpRight size={15} />
           </span>
-        </span>
-      </a>
+        </a>
+      </div>
     </div>
   );
 }
