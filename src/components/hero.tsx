@@ -4,7 +4,12 @@ import { useTranslations } from "next-intl";
 import { WaveAnimation } from "./wave-animation";
 import { Typewriter } from "./typewriter";
 import { ScrollIndicator } from "./scroll-indicator";
-import { useEffect, useState } from "react";
+import { EasterEgg } from "./easter-egg";
+import { useEffect, useState, useRef, Fragment } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -21,13 +26,35 @@ export function Hero() {
     setMounted(true);
   }, []);
 
+  // Split text: revela o headline palavra por palavra na entrada.
+  // Cada palavra é um <span>; o GSAP anima todos com stagger (cascata).
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(headlineRef.current!.querySelectorAll(".word"), {
+          opacity: 0,
+          yPercent: 100, // começa deslocada 1x a própria altura, e sobe
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.06, // atraso entre palavras = a cascata
+          delay: 0.35, // entra logo depois do typewriter
+        });
+      });
+    },
+    { scope: headlineRef }
+  );
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Wave background */}
       <WaveAnimation />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-20">
+      {/* Content — duas colunas: texto | foto */}
+      <div className="relative z-10 h-full px-8 md:px-20 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 items-center">
+        {/* Coluna esquerda — texto */}
+        <div className="flex flex-col justify-center">
         {/* Typewriter — above headline */}
         <div
           className={`mb-4 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
@@ -46,30 +73,27 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Headline */}
-        <div
-          className={`transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] delay-100 ${
-            mounted
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
-          }`}
+        {/* Headline — split text: cada palavra num span, animada com stagger */}
+        <h1
+          ref={headlineRef}
+          className="text-[32px] sm:text-[48px] md:text-[72px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-3.36px] text-foreground"
         >
-          <h1 className="text-[32px] sm:text-[48px] md:text-[72px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-3.36px] text-foreground">
-            {t("headline")}
-          </h1>
+          {t("headline")
+            .split(" ")
+            .map((word, i, arr) => (
+              <Fragment key={i}>
+                <span className="word inline-block will-change-transform">
+                  {word}
+                </span>
+                {i < arr.length - 1 ? " " : ""}
+              </Fragment>
+            ))}
+        </h1>
         </div>
 
-        {/* Subtitle */}
-        <div
-          className={`mt-8 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] delay-200 ${
-            mounted
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
-          }`}
-        >
-          <p className="text-lg md:text-xl font-normal text-foreground/60 max-w-[520px] leading-relaxed">
-            {t("subtitle")}
-          </p>
+        {/* Coluna direita — foto (easter egg) */}
+        <div className="relative h-full">
+          <EasterEgg />
         </div>
       </div>
 
