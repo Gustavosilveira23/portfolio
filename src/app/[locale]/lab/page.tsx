@@ -44,7 +44,7 @@ export default function LabPage() {
   return (
     <>
       {/* Selo fixo indicando que é ambiente de teste */}
-      <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-4 py-1.5 rounded-full border border-border bg-surface-2/80 backdrop-blur text-[11px] uppercase tracking-[1.5px] text-muted-foreground">
+      <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-4 py-1.5 rounded-full border border-border bg-surface-2/80 backdrop-blur text-xs uppercase tracking-[1.5px] text-muted-foreground">
         Lab · Sandbox de testes
       </div>
 

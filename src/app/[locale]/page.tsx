@@ -196,7 +196,7 @@ export default function HomePage() {
                     <div className="bg-surface-2 rounded-[20px] p-8 md:p-10 hover:bg-surface-3 transition-colors duration-300">
                       <div className="flex items-start justify-between gap-4 mb-4">
                         <div>
-                          <span className="inline-block px-2.5 py-1 text-[11px] rounded-full border border-border text-muted-foreground mb-3">
+                          <span className="inline-block px-2.5 py-1 text-xs rounded-full border border-border text-muted-foreground mb-3">
                             {item.type}
                           </span>
                           <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground group-hover:text-foreground/80 transition-colors">

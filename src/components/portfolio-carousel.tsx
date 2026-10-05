@@ -113,7 +113,7 @@ export function PortfolioCarousel() {
               />
             </div>
             <div className="p-7">
-              <p className="mb-2 text-[11px] uppercase tracking-[1.5px] text-neutral-400">
+              <p className="mb-2 text-xs uppercase tracking-[1.5px] text-neutral-400">
                 {categoryLabels[project.category]?.[locale] ??
                   project.tags.slice(0, 3).join(", ")}
               </p>

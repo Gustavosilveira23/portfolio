@@ -45,17 +45,18 @@ Definidos em `src/app/globals.css`. Base shadcn mais três superfícies própria
 - **Raio**: tudo deriva de `--radius: 0.625rem`. Usar `radius-sm` a `radius-4xl`, nunca px cru.
 - **Fonte**: Geist e Geist Mono, carregadas por `next/font`. Nenhuma outra família entra.
 
-## 5. Tipografia — o ponto fraco atual
+## 5. Tipografia
 
-O site usa hoje treze degraus da escala Tailwind (`xs` a `9xl`) **mais sete valores arbitrários**:
-`text-[11px]`, `[0.8rem]`, `[28px]`, `[40px]`, `[54px]`, `[56px]`, `[72px]`. Isso não é escala,
-é acúmulo.
+Desde 05/10/2026 o site não tem nenhum tamanho de fonte arbitrário: tudo usa a escala Tailwind
+(`xs` a `9xl`) mais dois degraus próprios, definidos no `@theme` do `globals.css`:
 
-Regras a partir de agora:
+- `text-hero` (40px) e `text-hero-lg` (54px): só o título do hero, que no desktop usa `text-7xl`.
 
-- **Não criar valor arbitrário novo.** Se falta um degrau, o problema é a escala.
-- Ao tocar em um componente que tem valor arbitrário, aproximar para o degrau mais próximo da
-  escala e conferir no navegador.
+Regras:
+
+- **Nenhum `text-[...]`.** Se falta um degrau, o problema é a escala: criar um token nomeado pelo
+  papel no `@theme`, como os do hero, e registrar aqui.
+- Etiquetas em maiúsculas (meta) usam `text-xs`, não 11px.
 - **Um tamanho display por seção**, no máximo. Se tudo é grande, nada é.
 - Corpo de texto vive em `text-sm` e `text-base`. `text-xs` é meta, não é corpo.
 
@@ -117,9 +118,6 @@ scroll reveal, horizontal scroll.
 
 ## 10. Dívida conhecida
 
-- Sete valores arbitrários de tipografia em uso (seção 5), contagem de 05/10/2026: `text-[11px]`
-  (5x), `[40px]` (4x), `[56px]` (3x), `[28px]` (3x), `[72px]`, `[54px]` e `[0.8rem]` (1x cada).
-  Os títulos das páginas de case (`28/40/56px`) são o maior bloco.
 - `:root` (tema claro global) tem `surface-1/2/3` com valores escuros. Como o site força `.dark`,
   isso nunca aparece — mas é uma armadilha se alguém remover a classe do `<html>`.
 - `components.json` tem `"registries": {}`. Quando houver componente próprio reutilizável, vale

@@ -76,7 +76,7 @@ export function Hero() {
         {/* Headline — split text: cada palavra num span, animada com stagger */}
         <h1
           ref={headlineRef}
-          className="text-[40px] sm:text-[54px] md:text-[72px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-3.36px] text-foreground"
+          className="text-hero sm:text-hero-lg md:text-7xl font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-3.36px] text-foreground"
         >
           {t("headline")
             .split(" ")

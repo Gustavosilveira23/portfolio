@@ -22,7 +22,7 @@ export function ServiceTag({ tag, isDragging }: ServiceTagProps) {
   // Tag without linked project — plain span
   if (!project) {
     return (
-      <span className="px-2.5 py-1 text-[11px] rounded-full border border-border text-muted-foreground">
+      <span className="px-2.5 py-1 text-xs rounded-full border border-border text-muted-foreground">
         {tag}
       </span>
     );
@@ -49,7 +49,7 @@ export function ServiceTag({ tag, isDragging }: ServiceTagProps) {
             if (dx > 5 || dy > 5) e.preventDefault();
           }
         }}
-        className="inline-block px-2.5 py-1 text-[11px] rounded-full border border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground transition-colors"
+        className="inline-block px-2.5 py-1 text-xs rounded-full border border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground transition-colors"
       >
         {tag}
       </Link>
