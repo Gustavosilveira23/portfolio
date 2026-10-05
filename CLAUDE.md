@@ -36,6 +36,7 @@ navegador já visitou `/pt`, a raiz vai cair em `/pt`. Para testar EN, apagar o 
 1. Imagens em `public/projects/<slug>/`, recortadas (regras em `DESIGN.md`, "Imagem de case").
 2. Objeto novo em `src/content/projects.ts`. A ordem do array é a ordem do carrossel da home e
    da página `/portfolio`. Todo campo de texto tem `pt` e `en`.
+   `client` é o nome da empresa, igual nas duas línguas (aparece em "Cliente" no topo do case).
 3. Entrada em `caseMeta` (SEO) e uma linha em `public/llms.txt`.
 4. A home, `/portfolio` e o sitemap puxam o case sozinhos.
 
@@ -70,8 +71,6 @@ corpo, senão o item se parte em dois.
   `curl -I "https://www.googletagmanager.com/gtag/js?id=<ID>"`. Um ID que o Google não reconhece
   devolve 404, enquanto IDs aleatórios devolvem 200. Em 05/10/2026 o ID `G-MBSDZ8DF98` dava 404
   (propriedade ou fluxo apagado no GA).
-- **"Cliente: Projeto Pessoal"** está fixo em `case-study-content.tsx` para todos os cases,
-  inclusive os da Hotmart. Dívida em aberto.
 - `public/projects/Collectors/` tem imagens sem case. Não apagar sem perguntar: pode ser material
   de case futuro.
 - Repo fora do OneDrive de propósito: o hot-reload do Next não funciona em pasta sincronizada.

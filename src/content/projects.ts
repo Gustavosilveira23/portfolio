@@ -1,5 +1,6 @@
 export type Project = {
   slug: string;
+  client: string;
   category: "product" | "research" | "design";
   coverImage: string;
   year: string;
@@ -17,6 +18,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "duo-ai-buyer-redesign",
+    client: "Duo AI",
     category: "product",
     coverImage: "/projects/Duo-ai-buyer-redesign/DuoAI-Consumer-Redesign-Screen.png",
     year: "2026",
@@ -57,6 +59,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hotmart-club-jtbd",
+    client: "Hotmart",
     category: "research",
     coverImage: "/projects/Hotmart-new-club/2.png",
     year: "2024",
@@ -98,6 +101,7 @@ export const projects: Project[] = [
   },
   {
     slug: "duo-ai-creator-studio",
+    client: "Duo AI",
     category: "product",
     coverImage: "/projects/duo-ai/duo-ai-admin.png",
     year: "2025 – Present",
@@ -138,6 +142,7 @@ export const projects: Project[] = [
   },
   {
     slug: "raio-x-creator",
+    client: "Raio X Creator",
     category: "product",
     coverImage: "/projects/raio-x-creator/home.png",
     year: "2025 – Present",
@@ -180,6 +185,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hotmart-online-events",
+    client: "Hotmart",
     category: "design",
     coverImage: "/projects/hotmart-online-events/cover.png",
     year: "2022",
@@ -222,6 +228,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hotmart-design-sprint",
+    client: "Hotmart",
     category: "design",
     coverImage: "/projects/hotmart-design-sprint/sprint2.png",
     year: "2023",
@@ -263,6 +270,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hotmart-research-repository",
+    client: "Hotmart",
     category: "research",
     coverImage: "/projects/repositorio-pesquisa-automatizado/repositorio.png",
     year: "2023 – 2024",
@@ -302,6 +310,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sonho-grande",
+    client: "Instituto Sonho Grande",
     category: "design",
     coverImage: "/projects/Sonho-grande/3f67ce225722305.682379b97a7e0.png",
     year: "2022",
@@ -344,6 +353,7 @@ export const projects: Project[] = [
   },
   {
     slug: "softruck-redesign",
+    client: "Softruck",
     category: "design",
     coverImage: "/projects/softruck/soft-4-home.png",
     year: "2022",

@@ -120,7 +120,7 @@ export function CaseStudyContent({
                 {locale === "pt" ? "Cliente" : "Client"}
               </p>
               <p className="text-lg text-foreground">
-                {locale === "pt" ? "Projeto Pessoal" : "Personal Project"}
+                {project.client}
               </p>
             </div>
             <div>
