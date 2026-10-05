@@ -12,6 +12,10 @@ const caseMeta: Record<string, { title: string; description: string }> = {
     title: "Raio X Creator: AI Analytics for Content Creators",
     description: "AI-powered analytics platform for content creators. Case study covering product design, UX research, AI integration, and frontend development.",
   },
+  "hotmart-online-events": {
+    title: "Hotmart: Online Events",
+    description: "Mobile redesign of Hotmart's online events product for FIRE: passwordless login, live stream up front, stage and language switching inside the stream. Service blueprint, benchmark, critique, and usability testing.",
+  },
   "hotmart-design-sprint": {
     title: "Design Sprint: Personalization at Hotmart",
     description: "4-day design sprint that solved a personalization pain point at Hotmart. Prototype validated in 1 week, shipped in 1 month.",

@@ -179,6 +179,48 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "hotmart-online-events",
+    category: "design",
+    coverImage: "/projects/hotmart-online-events/cover.png",
+    year: "2022",
+    tags: ["Product Design", "UX Research", "Mobile", "Usability Testing"],
+    title: {
+      pt: "Hotmart: Eventos Online",
+      en: "Hotmart: Online Events",
+    },
+    description: {
+      pt: "Redesenhei a experiência mobile do produto de eventos online da Hotmart para o FIRE: login sem senha, live em destaque, troca de palco e idioma dentro da transmissão e upsell durante o evento.",
+      en: "Redesigned the mobile experience of Hotmart's online events product for FIRE: passwordless login, the live stream up front, stage and language switching inside the stream, and upsell during the event.",
+    },
+    context: {
+      pt: "O FIRE é o evento anual da Hotmart. Na edição online, os participantes assistiam às palestras pelo produto de eventos: vários palcos ao mesmo tempo, transmissão em mais de um idioma (incluindo Libras), chat e venda de ingresso VIP.\n\nA maior parte do público entrava pelo celular, e o produto tinha nascido no desktop. Isso aparecia no suporte e no NPS. Muita gente travava no login pedindo senha nova. Quem entrava não achava a live, e quase ninguém sabia trocar de palco ou de idioma. Em vários pontos da jornada, quem tinha problema não tinha a quem pedir ajuda.",
+      en: "FIRE is Hotmart's annual event. In the online edition, attendees watched talks through the events product: several stages at once, streams in more than one language (including Brazilian Sign Language), chat, and VIP ticket sales.\n\nMost of the audience joined from a phone, and the product had been born on desktop. It showed up in support and NPS. Many people got stuck at login asking for a new password. Those who got in couldn't find the live stream, and few knew how to switch stage or language. At several points in the journey, someone with a problem had nobody to ask.",
+    },
+    role: {
+      pt: "Product Designer e UX Researcher do projeto de ponta a ponta: mapeamento do serviço, pesquisa de produto e de mercado, design das telas, facilitação do critique, teste de usabilidade, handoff e acompanhamento durante o evento.",
+      en: "Product Designer and UX Researcher on the project end to end: service mapping, product and market research, screen design, critique facilitation, usability testing, handoff, and monitoring during the event.",
+    },
+    process: {
+      pt: "**Mapear o serviço antes da tela.** A primeira pergunta era como entregar uma boa experiência do começo ao fim do evento, fora e dentro do player. Montei um service blueprint com cada etapa da jornada, o objetivo do participante e da Hotmart em cada uma, os pontos de contato e os times envolvidos. A base veio de análise do fluxo atual, entrevistas com stakeholders e participantes, feedbacks abertos do NPS de eventos, uma survey sobre acesso e dados de clique nas páginas.\n\n**Organizar a evidência.** Usei Atomic Research para separar experimento, fato e recomendação. Duas recomendações puxaram o resto do projeto: focar no mobile e consertar a navegação e o consumo de live e chat.\n\n**Escolher rápido com prazo curto.** Com o evento perto, a pergunta virou o que priorizar. Fiz um benchmark de features e componentes com YouTube, Facebook, LinkedIn, Twitch, Livestorm e Hopin. Depois, uma análise heurística das telas mobile em que cada elemento ganhou um destino: esconder, remover ou manter.\n\n**Validar antes de entregar.** O protótipo passou por um design critique com Produto, Design, Dev, CX e o time de Eventos, e depois por um teste de usabilidade não moderado no Maze. No handoff, o tracking dos eventos já saiu definido. Durante o FIRE, acompanhei o mapa de calor no Hotjar e incluí uma pergunta sobre a experiência no NPS do evento.",
+      en: "**Map the service before the screen.** The first question was how to deliver a good experience from the start of the event to the end, outside the player as well as inside it. I built a service blueprint with every journey stage, the attendee's and Hotmart's goal at each one, the touchpoints, and the teams involved. It drew on an analysis of the current flow, interviews with stakeholders and attendees, open-ended feedback from event NPS, an access survey, and page click data.\n\n**Organize the evidence.** I used Atomic Research to separate experiment, fact, and recommendation. Two recommendations drove the rest of the project: focus on mobile, and fix navigation and the way people watched the stream and used the chat.\n\n**Choose fast on a short deadline.** With the event close, the question became what to prioritize. I benchmarked features and components across YouTube, Facebook, LinkedIn, Twitch, Livestorm, and Hopin. Then I ran a heuristic review of the mobile screens where every element got a fate: hide, remove, or keep.\n\n**Validate before shipping.** The prototype went through a design critique with Product, Design, Dev, CX, and the Events team, then an unmoderated usability test on Maze. Event tracking was defined in the handoff. During FIRE, I followed heatmaps on Hotjar and added a question about the experience to the event NPS.",
+    },
+    decisions: {
+      pt: "1. **Login sem senha**: o participante entra com o e-mail, sem precisar lembrar senha. O \"esqueci minha senha\" era a primeira barreira da jornada e enchia a fila do suporte justo na hora do evento.\n\n2. **\"Transmitindo agora\" na home e no menu**: quando um palco está ao vivo, ele vira o primeiro card da home e o primeiro item do menu. Antes, a live dividia espaço com módulos e gravações.\n\n3. **Vídeo e chat em primeiro plano**: a tela de transmissão perdeu os controles herdados do produto de cursos (anterior, próximo, menu do curso). Ficaram o player, o chat e uma barra com o que importa durante a live.\n\n4. **Palco e idioma sem sair da transmissão**: a troca abre numa bottom sheet sobre o vídeo, com os palcos ao vivo e os idiomas disponíveis, Libras incluída.\n\n5. **O teste derrubou um atalho**: no Maze, chegar à live funcionou. Já os atalhos de troca de palco passaram quase despercebidos. As pessoas iam pelo menu ou procuravam um ícone de configurações. Na versão final, a troca foi para as configurações do player, as abas foram reorganizadas e a programação entrou no lugar da lista de palcos.\n\n6. **Upsell dentro do evento**: banner fixo na home e um gatilho com contador sobre o vídeo, para quem estava com ingresso gratuito.",
+      en: "1. **Passwordless login**: attendees sign in with their email, no password to remember. \"Forgot my password\" was the first barrier in the journey and flooded the support queue right when the event started.\n\n2. **\"Streaming now\" on the home and in the menu**: when a stage is live, it becomes the first card on the home screen and the first item in the menu. Before, the live stream shared space with course modules and recordings.\n\n3. **Video and chat up front**: the stream screen lost the controls inherited from the courses product (previous, next, course menu). What stayed: the player, the chat, and a bar with what matters during the stream.\n\n4. **Stage and language without leaving the stream**: switching opens in a bottom sheet over the video, listing live stages and available languages, sign language included.\n\n5. **Testing killed a shortcut**: on Maze, getting to the stream worked. The stage-switching shortcuts went mostly unnoticed. People used the menu or looked for a settings icon. In the final version, switching moved into the player settings, the tabs were reorganized, and the schedule replaced the list of stages.\n\n6. **Upsell inside the event**: a fixed banner on the home screen and a countdown offer over the video for attendees on a free ticket.",
+    },
+    results: {
+      pt: "- Cliques em \"esqueci minha senha\" ficaram raros, e a maioria passou a entrar pelo acesso sem senha\n- Mais participantes acessaram o evento pelo celular\n- Alta taxa de conclusão nas tarefas de encontrar a live e trocar de palco e idioma\n- Mais participantes gratuitos fizeram upgrade de ingresso do que nos eventos anteriores\n- Feedback positivo sobre a experiência no NPS do evento",
+      en: "- Clicks on \"forgot my password\" became rare, and most attendees signed in through passwordless access\n- More attendees joined the event from their phones\n- High completion on the tasks of finding the stream and switching stage and language\n- More free attendees upgraded their ticket than in previous events\n- Positive feedback on the experience in the event NPS",
+    },
+    images: [
+      "/projects/hotmart-online-events/cover.png",
+      "/projects/hotmart-online-events/mobile-analysis.png",
+      "/projects/hotmart-online-events/stage-language.png",
+      "/projects/hotmart-online-events/usability-test.png",
+      "/projects/hotmart-online-events/evolution.png",
+    ],
+  },
+  {
     slug: "hotmart-design-sprint",
     category: "design",
     coverImage: "/projects/hotmart-design-sprint/sprint2.png",
