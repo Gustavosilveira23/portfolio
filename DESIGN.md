@@ -69,6 +69,15 @@ Regras a partir de agora:
 - Contraste mínimo WCAG AA (4.5:1) em texto. Sobre o bege da seção clara, conferir de novo — é
   onde quebra.
 
+### Imagem de case
+
+- **Recorte de tela ou de artefato, nunca o slide inteiro.** Cabeçalho, título em serifa e fundo
+  do deck ficam fora: dentro do site eles viram uma segunda identidade visual competindo com a
+  Geist.
+- Imagem que mostra número interno (misclick, conversão, receita) é recortada antes de entrar.
+- As posições `[2]` e `[4]` aparecem lado a lado: as duas precisam ter proporção parecida, senão
+  o par fica com alturas diferentes.
+
 ## 7. Movimento
 
 Stack: Lenis (scroll suave), cursor customizado, dot grid, shader plane, magnetic, typewriter,
@@ -87,6 +96,9 @@ scroll reveal, horizontal scroll.
 - Primeira pessoa, direta, sem terceira pessoa institucional.
 - Fato e número no lugar de adjetivo. "8+ anos" e o nome do produto valem mais que "apaixonado por
   experiências".
+- **Exceção: métrica interna de empresa ou cliente não entra em case.** Sem o número, o resultado
+  é descrito pelo que mudou ("ficaram raros", "mais do que nos eventos anteriores"), nunca com
+  valor inventado ou estimado.
 - Rodar o checklist de vícios de linguagem de IA em todo texto antes de publicar: travessão de
   ritmo, "não é X, é Y", buzzword, hedging, regra de três genérica, frases todas do mesmo tamanho.
 
@@ -100,13 +112,14 @@ scroll reveal, horizontal scroll.
 - Emoji na interface.
 - px cru onde existe token de raio ou espaçamento.
 - Movimento que bloqueia leitura ou ignora `prefers-reduced-motion`.
+- Slide de apresentação inteiro como imagem de case.
+- Métrica interna de empresa ou cliente em case.
 
 ## 10. Dívida conhecida
 
-- **`chart-1` a `chart-5` não são usados em lugar nenhum** (`grep` em `src/`, 24/08/2026). São o
-  azul padrão do shadcn e as únicas cores saturadas do arquivo. Remover na próxima limpeza de
-  `globals.css` — enquanto estiverem lá, são um convite a quebrar a regra 2.
-- Sete valores arbitrários de tipografia em uso (seção 5).
+- Sete valores arbitrários de tipografia em uso (seção 5), contagem de 05/10/2026: `text-[11px]`
+  (5x), `[40px]` (4x), `[56px]` (3x), `[28px]` (3x), `[72px]`, `[54px]` e `[0.8rem]` (1x cada).
+  Os títulos das páginas de case (`28/40/56px`) são o maior bloco.
 - `:root` (tema claro global) tem `surface-1/2/3` com valores escuros. Como o site força `.dark`,
   isso nunca aparece — mas é uma armadilha se alguém remover a classe do `<html>`.
 - `components.json` tem `"registries": {}`. Quando houver componente próprio reutilizável, vale
@@ -116,3 +129,6 @@ scroll reveal, horizontal scroll.
 
 *Escrito em 24/08/2026 a partir de `src/app/globals.css`, `src/app/layout.tsx` e varredura de
 classes em `src/`. Método: regra por restrição, não por descrição.*
+
+*05/10/2026: `chart-1` a `chart-5` removidos do `globals.css` (não tinham uso); regras de imagem
+de case e de métrica interna adicionadas a partir do case Eventos Online.*
