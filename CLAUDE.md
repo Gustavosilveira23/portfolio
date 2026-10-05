@@ -69,8 +69,9 @@ corpo, senão o item se parte em dois.
   código: reiniciar o `npm run dev`.
 - **GA sem dados**: conferir se o script carrega com
   `curl -I "https://www.googletagmanager.com/gtag/js?id=<ID>"`. Um ID que o Google não reconhece
-  devolve 404, enquanto IDs aleatórios devolvem 200. Em 05/10/2026 o ID `G-MBSDZ8DF98` dava 404
-  (propriedade ou fluxo apagado no GA).
+  devolve 404, enquanto IDs aleatórios devolvem 200. Em 05/10/2026 o fluxo antigo
+  (`G-MBSDZ8DF98`) existia no GA mas o script dava 404 havia semanas; criamos um fluxo novo,
+  `G-EXZMV47S4W`. Se repetir, criar fluxo novo resolve mais rápido que esperar.
 - `public/projects/Collectors/` tem imagens sem case. Não apagar sem perguntar: pode ser material
   de case futuro.
 - Repo fora do OneDrive de propósito: o hot-reload do Next não funciona em pasta sincronizada.
