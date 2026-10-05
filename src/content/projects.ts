@@ -400,9 +400,3 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
 
-export function getProjectsByCategory(
-  category: Project["category"] | "all"
-): Project[] {
-  if (category === "all") return projects;
-  return projects.filter((p) => p.category === category);
-}

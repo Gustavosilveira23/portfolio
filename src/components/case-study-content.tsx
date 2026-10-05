@@ -103,7 +103,7 @@ export function CaseStudyContent({
         </div>
 
         <ScrollReveal>
-          <h1 className="text-[28px] sm:text-[40px] md:text-[56px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground max-w-3xl">
             {project.title[locale]}
           </h1>
         </ScrollReveal>
@@ -221,7 +221,7 @@ export function CaseStudyContent({
         <section className="px-8 md:px-20 py-20">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
-              <h2 className="text-[28px] sm:text-[40px] md:text-[56px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground mb-16">
                 {t("decisions")}
               </h2>
             </ScrollReveal>
@@ -274,7 +274,7 @@ export function CaseStudyContent({
       <section className="px-8 md:px-20 py-20">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-[28px] sm:text-[40px] md:text-[56px] font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-none tracking-[-1.5px] sm:tracking-[-2.5px] md:tracking-[-4.32px] text-foreground mb-16">
               {t("results")}
             </h2>
           </ScrollReveal>
@@ -357,7 +357,7 @@ export function CaseStudyContent({
                   Home
                 </Link>
                 <Link
-                  href="/portfolio"
+                  href="/#portfolio"
                   className="hover:text-primary transition-colors"
                 >
                   Portfolio

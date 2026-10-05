@@ -54,11 +54,7 @@
   "portfolio": {
     "title": "Portfólio",
     "subtitle": "Cases de produto, pesquisa e design que mostram meu processo e decisões.",
-    "view_project": "Ver projeto",
-    "filter_all": "Todos",
-    "filter_product": "Produtos",
-    "filter_research": "UX Research",
-    "filter_design": "UX/UI Design"
+    "view_project": "Ver projeto"
   },
   "process": {
     "title": "Meu Processo",

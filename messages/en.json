@@ -54,11 +54,7 @@
   "portfolio": {
     "title": "Portfolio",
     "subtitle": "Product, research, and design cases showcasing my process and decisions.",
-    "view_project": "View project",
-    "filter_all": "All",
-    "filter_product": "Products",
-    "filter_research": "UX Research",
-    "filter_design": "UX/UI Design"
+    "view_project": "View project"
   },
   "process": {
     "title": "My Process",

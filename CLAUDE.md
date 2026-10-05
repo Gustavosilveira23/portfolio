@@ -34,11 +34,10 @@ navegador já visitou `/pt`, a raiz vai cair em `/pt`. Para testar EN, apagar o 
 ## Adicionar um case
 
 1. Imagens em `public/projects/<slug>/`, recortadas (regras em `DESIGN.md`, "Imagem de case").
-2. Objeto novo em `src/content/projects.ts`. A ordem do array é a ordem do carrossel da home e
-   da página `/portfolio`. Todo campo de texto tem `pt` e `en`.
+2. Objeto novo em `src/content/projects.ts`. A ordem do array é a ordem do carrossel da home. Todo campo de texto tem `pt` e `en`.
    `client` é o nome da empresa, igual nas duas línguas (aparece em "Cliente" no topo do case).
 3. Entrada em `caseMeta` (SEO) e uma linha em `public/llms.txt`.
-4. A home, `/portfolio` e o sitemap puxam o case sozinhos.
+4. O carrossel da home e o sitemap puxam o case sozinhos.
 
 O array `images` tem posições fixas no layout do case:
 
@@ -72,6 +71,7 @@ corpo, senão o item se parte em dois.
   devolve 404, enquanto IDs aleatórios devolvem 200. Em 05/10/2026 o fluxo antigo
   (`G-MBSDZ8DF98`) existia no GA mas o script dava 404 havia semanas; criamos um fluxo novo,
   `G-EXZMV47S4W`. Se repetir, criar fluxo novo resolve mais rápido que esperar.
-- `public/projects/Collectors/` tem imagens sem case. Não apagar sem perguntar: pode ser material
-  de case futuro.
+- **Não existe página `/portfolio`.** O portfólio é a seção `#portfolio` da home; `next.config.ts`
+  redireciona `/portfolio` e `/pt/portfolio` para lá. As páginas de case (`/portfolio/<slug>`)
+  continuam. Links internos para a lista usam `/#portfolio`.
 - Repo fora do OneDrive de propósito: o hot-reload do Next não funciona em pasta sincronizada.
