@@ -1,17 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -21,13 +9,7 @@ export const metadata: Metadata = {
   description:
     "Senior Product Designer specializing in AI product design, SaaS interfaces, and early-stage startups. 8+ years of experience. Available for freelance and contract work.",
   metadataBase: new URL("https://gustavosilveira.com"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en": "/",
-      "pt-BR": "/pt",
-    },
-  },
+  // Canonical e hreflang ficam em cada página (localeAlternates em src/lib/seo.ts).
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -71,70 +53,11 @@ export const metadata: Metadata = {
   ],
 };
 
+// O <html> mora em [locale]/layout.tsx, o único que sabe o idioma da página (atributo lang).
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Gustavo Silveira",
-    url: "https://gustavosilveira.com",
-    jobTitle: "Senior Product Designer",
-    description:
-      "Senior Product Designer specializing in AI product design, SaaS interfaces, and early-stage startups.",
-    sameAs: [
-      "https://www.linkedin.com/in/gustavosilveira23/",
-      "https://github.com/Gustavosilveira23",
-    ],
-    knowsAbout: [
-      "AI Product Design",
-      "UX Design",
-      "SaaS Design",
-      "Design Systems",
-      "User Research",
-      "Conversational AI",
-    ],
-    worksFor: [
-      { "@type": "Organization", name: "Duo AI" },
-    ],
-    makesOffer: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Product Design Consulting",
-          serviceType: "AI Product Design, SaaS UX, Design Systems, User Research",
-        },
-        availability: "https://schema.org/InStock",
-        areaServed: "Global",
-      },
-    ],
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "UFMG",
-    },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Uberlandia",
-      addressRegion: "MG",
-      addressCountry: "BR",
-    },
-  };
-
-  return (
-    <html className="dark scroll-smooth bg-background">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased text-foreground`}
-      >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {children}
-      </body>
-      <GoogleAnalytics gaId="G-EXZMV47S4W" />
-    </html>
-  );
+  return children;
 }

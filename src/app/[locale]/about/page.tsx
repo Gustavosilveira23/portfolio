@@ -8,6 +8,17 @@ import {
   GraduationCap,
   Award,
 } from "lucide-react";
+import type { Metadata } from "next";
+import { localeAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return { alternates: localeAlternates(locale, "/about") };
+}
 
 export default function AboutPage() {
   const t = useTranslations("about");

@@ -25,7 +25,9 @@ coisa que aparece na tela.
 | Layout da página de case | `src/components/case-study-content.tsx` |
 | Home | `src/app/[locale]/page.tsx` + componentes em `src/components/` |
 | Tokens, cores, fonte | `src/app/globals.css` |
-| Google Analytics, metadata global, JSON-LD | `src/app/layout.tsx` |
+| Metadata global | `src/app/layout.tsx` |
+| `<html lang>`, fontes, Google Analytics, JSON-LD `Person` | `src/app/[locale]/layout.tsx` |
+| Canonical e hreflang | `localeAlternates()` em `src/lib/seo.ts`, chamado por cada página |
 | Material bruto (Figma, exports pesados) | `OneDrive\...\Gus\Trabalho\Portfolio\` (fora do repo) |
 
 EN fica na raiz (`/`) e PT em `/pt`. O middleware redireciona pelo cookie `NEXT_LOCALE`: se o
@@ -64,6 +66,14 @@ corpo, senão o item se parte em dois.
 
 ## Armadilhas conhecidas
 
+- **Toda página indexável nova exporta `generateMetadata` com `localeAlternates(locale, "/rota")`.**
+  O layout não define canonical de propósito. Até 03/11/2026 o canonical `/` morava no layout
+  raiz e `/about`, `/contact` e todo o `/pt` diziam ao Google que eram a home. Página client
+  component (`"use client"`) não exporta metadata: usar um `layout.tsx` ao lado (ver `contact/`)
+  ou um `page.tsx` de servidor que renderiza o componente (ver a home e `home-content.tsx`).
+- **O `<html>` mora em `[locale]/layout.tsx`**, não no layout raiz, para o `lang` seguir o idioma.
+  O layout raiz só repassa `children`; o `src/app/not-found.tsx` traz o próprio `<html>` para as
+  rotas que não passam pelo `[locale]`.
 - **Servidor de dev trava** em sessão longa ("Jest worker exceeding retry limit"). Não é bug de
   código: reiniciar o `npm run dev`.
 - **GA sem dados**: conferir se o script carrega com

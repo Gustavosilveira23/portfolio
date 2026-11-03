@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/content/projects";
 import { CaseStudyContent } from "@/components/case-study-content";
+import { localeAlternates } from "@/lib/seo";
 
 const caseMeta: Record<string, { title: string; description: string }> = {
   "duo-ai-buyer-redesign": {
@@ -54,13 +55,7 @@ export async function generateMetadata({
   return {
     title: meta.title,
     description: meta.description,
-    alternates: {
-      canonical: path,
-      languages: {
-        "en": `/portfolio/${slug}`,
-        "pt-BR": `/pt/portfolio/${slug}`,
-      },
-    },
+    alternates: localeAlternates(locale, `/portfolio/${slug}`),
     openGraph: {
       type: "article",
       title: `${meta.title} | Gustavo Silveira`,
