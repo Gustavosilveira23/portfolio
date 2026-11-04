@@ -92,9 +92,17 @@ substitui o bloco do pai inteiro, e a página ficava sem imagem.
 - Nada de shader ou canvas novo na página.
 
 **Pronto quando**
-- [ ] Com reduced-motion ligado, nenhuma animação e todo o texto visível.
-- [ ] O replay não bloqueia leitura: rolar rápido mostra o texto completo.
-- [ ] Manual (Gustavo): ritmo do replay.
+- [x] Com reduced-motion ligado, nenhuma animação e todo o texto visível. *(tudo dentro de
+      `gsap.matchMedia("no-preference")`; conferido pelo Gustavo, 04/11)*
+- [x] O replay não bloqueia leitura: cada fala anima uma vez, em no máximo ~1,2s, com gatilho
+      próprio. Pular para o fim da página revela tudo e o SplitText é revertido. *(04/11)*
+- [x] Texto inteiro no HTML do servidor (6 falas, 13 linhas). Altura da fala igual com e sem split
+      em 360, 390, 768 e desktop. *(04/11; com `type: "chars"` só, a 390px a fala perdia uma
+      linha e a página pulava 23px ao reverter. Resolvido com `"words,chars"`)*
+- [x] Manual (Gustavo): ritmo do replay. *(04/11)*
+
+*Implementado:* `conversation-replay.tsx` (fala do usuário digitada, até 0,8s; fala da skill linha a
+linha com 0,2s de pausa) e `ScrollReveal` nos blocos de código e no comando de instalação.
 
 ## F3. SEO/GEO, ligações e PT
 

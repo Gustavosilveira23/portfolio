@@ -1,6 +1,8 @@
 import { pick, type GuideBlock, type Locale } from "@/content/skills";
 import { InlineText } from "./inline";
 import { CopyCommand } from "./copy-command";
+import { ConversationReplay } from "./conversation-replay";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export type BlockLabels = {
   copy: string;
@@ -31,16 +33,18 @@ export function Block({
 
     case "code":
       return (
-        <figure className="space-y-2">
-          {block.label && <figcaption className={labelClass}>{pick(block.label, locale)}</figcaption>}
-          <pre
-            className={`rounded-xl border border-border bg-surface-2 p-4 font-mono text-sm leading-relaxed text-foreground ${
-              block.wrap ? "whitespace-pre-wrap" : "scrollbar-subtle overflow-x-auto"
-            }`}
-          >
-            {pick(block.code, locale)}
-          </pre>
-        </figure>
+        <ScrollReveal>
+          <figure className="space-y-2">
+            {block.label && <figcaption className={labelClass}>{pick(block.label, locale)}</figcaption>}
+            <pre
+              className={`rounded-xl border border-border bg-surface-2 p-4 font-mono text-sm leading-relaxed text-foreground ${
+                block.wrap ? "whitespace-pre-wrap" : "scrollbar-subtle overflow-x-auto"
+              }`}
+            >
+              {pick(block.code, locale)}
+            </pre>
+          </figure>
+        </ScrollReveal>
       );
 
     case "table":
@@ -97,32 +101,21 @@ export function Block({
 
     case "install":
       return (
-        <CopyCommand
-          command={block.command}
-          labels={{ title: labels.shell, copy: labels.copy, copied: labels.copied, aria: labels.copyAria }}
-        />
+        <ScrollReveal>
+          <CopyCommand
+            command={block.command}
+            labels={{ title: labels.shell, copy: labels.copy, copied: labels.copied, aria: labels.copyAria }}
+          />
+        </ScrollReveal>
       );
 
     case "conversation":
-      // F1: a conversa inteira, parada. O replay no scroll entra na F2 por cima deste HTML.
       return (
-        <figure className="overflow-hidden rounded-xl border border-border bg-surface-2">
-          <figcaption className={`border-b border-border px-4 py-3 ${labelClass}`}>{labels.terminal}</figcaption>
-          <div className="space-y-5 p-4 font-mono text-sm leading-relaxed">
-            {block.turns.map((turn, i) =>
-              turn.role === "user" ? (
-                <p key={i} className="whitespace-pre-wrap text-muted-foreground">
-                  <span aria-hidden className="select-none">&gt; </span>
-                  {pick(turn.text, locale)}
-                </p>
-              ) : (
-                <p key={i} className="whitespace-pre-wrap text-foreground">
-                  {pick(turn.text, locale)}
-                </p>
-              )
-            )}
-          </div>
-        </figure>
+        <ConversationReplay
+          title={labels.terminal}
+          labelClass={labelClass}
+          turns={block.turns.map((turn) => ({ role: turn.role, text: pick(turn.text, locale) }))}
+        />
       );
   }
 }
