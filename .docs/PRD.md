@@ -89,12 +89,19 @@ de exemplos e de sequência).
   2026"). O FAQ entra como conteúdo; a marcação é opcional.
 - **HowTo:** fora desde set/2023. Não usar. **SoftwareApplication:** evitar (pede preço e avaliação).
 
-## Ponto em aberto no conteúdo
+## Limite da IA na síntese: fonte a usar
 
-A skill diz "AI summaries can miss 20-40% of important detail" (SKILL.md linhas 26 e 437). **Fonte
-não encontrada.** Mais próximos: NN/g (síntese por IA "consistently falls short"), estudo
-Georgetown/UW (51,6% de omissão, mas em vídeo de acidente). Na página: trocar por citação com fonte
-ou tirar o percentual. Na skill: mesma correção, via `/skills-sync` (as duas cópias).
+A skill dizia "AI summaries can miss 20-40% of important detail", sem fonte. **Resolvido em
+03/11/2026:** a skill (as duas cópias, commit `0187a44` no repo de skills) agora cita a fonte
+primária, que é a que a página também usa:
+
+- Kate Moran e Maria Rosala, NN/g, "Accelerating Research with AI" (27/09/2024, revisado em
+  21/01/2026): https://www.nngroup.com/articles/research-with-ai/
+- Citações verbatim: "It might miss, misinterpret, or even manufacture insights." /
+  "it often misses large sections of the transcript where codes should be applied" /
+  "Never rely on AI tools to perform all your analysis for you."
+- Não usar o percentual em lugar nenhum. A palestra "Human vs. machine" (Rosenfeld) foi
+  descartada: o site bloqueia leitura e não deu pra confirmar autoria.
 
 ## Sugestões de título (rascunho, entram no texto para revisão)
 

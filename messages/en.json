@@ -114,5 +114,20 @@
   "footer": {
     "rights": "All rights reserved.",
     "built_with": "Built with Next.js, Tailwind CSS, and Claude Code"
+  },
+  "skills": {
+    "breadcrumb_root": "Claude Skills",
+    "on_this_page": "On this page",
+    "updated": "Updated",
+    "min_read": "{n} min read",
+    "license": "MIT license",
+    "faq_title": "Frequently asked questions",
+    "faq_nav": "FAQ",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copy_aria": "Copy the install command",
+    "terminal": "Claude Code",
+    "by": "By",
+    "shell": "Terminal"
   }
 }
