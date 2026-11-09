@@ -89,7 +89,7 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={htmlLang(locale)} className="dark scroll-smooth bg-background">
+    <html lang={htmlLang(locale)} className="dark motion-safe:scroll-smooth bg-background">
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased text-foreground`}
       >

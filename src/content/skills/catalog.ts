@@ -1,5 +1,7 @@
 // As 6 skills do repo claude-design-skills, na ordem do pipeline. Texto do índice /skills.
 // Só a ux-research tem guia; as outras levam para o SKILL.md no GitHub.
+// "60-30-10" leva U+2060 (word joiner) depois de cada hífen: não quebra a linha ali, e a Geist
+// não tem glyph para o hífen não separável U+2011.
 
 import type { L } from "./types";
 
@@ -48,8 +50,8 @@ export const catalog: CatalogEntry[] = [
   {
     slug: "ui-designer",
     line: {
-      en: "Spacing on an 8pt grid, a type scale, the 60-30-10 color rule and a seven-point check that runs before any UI goes out.",
-      pt: "Espaçamento em grid de 8pt, escala tipográfica, regra de cor 60-30-10 e uma checagem de sete pontos antes de qualquer tela sair.",
+      en: "Spacing on an 8pt grid, a type scale, the 60-⁠30-⁠10 color rule and a seven-point check that runs before any UI goes out.",
+      pt: "Espaçamento em grid de 8pt, escala tipográfica, regra de cor 60-⁠30-⁠10 e uma checagem de sete pontos antes de qualquer tela sair.",
     },
   },
   {

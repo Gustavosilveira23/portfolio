@@ -162,7 +162,8 @@ export function Nav() {
                 href="https://www.linkedin.com/in/gustavosilveira23/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+                aria-label="LinkedIn"
+                className="-m-1.5 block p-1.5 text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
               >
                 <Linkedin size={14} />
               </a>
@@ -172,7 +173,8 @@ export function Nav() {
                 href="https://github.com/Gustavosilveira23"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+                aria-label="GitHub"
+                className="-m-1.5 block p-1.5 text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
               >
                 <Github size={14} />
               </a>
@@ -182,12 +184,14 @@ export function Nav() {
 
         {/* Mobile hamburger */}
         <div className="flex md:hidden items-center gap-3">
-          <div className="flex items-center gap-2">
+          {/* Ícone de 14px com padding de 6px: alvo de toque de 26px sem mudar o desenho. */}
+          <div className="flex items-center gap-3">
             <a
               href="https://www.linkedin.com/in/gustavosilveira23/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+              aria-label="LinkedIn"
+              className="-m-1.5 block p-1.5 text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
             >
               <Linkedin size={14} />
             </a>
@@ -195,7 +199,8 @@ export function Nav() {
               href="https://github.com/Gustavosilveira23"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
+              aria-label="GitHub"
+              className="-m-1.5 block p-1.5 text-foreground opacity-50 hover:opacity-100 transition-opacity duration-200"
             >
               <Github size={14} />
             </a>

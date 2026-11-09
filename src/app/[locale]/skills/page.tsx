@@ -94,33 +94,36 @@ export default async function SkillsIndexPage({
         </header>
 
         <section aria-label={t("index_list")} className="mt-20 md:mt-28">
-          {/* A única com guia abre a lista com mais peso; as outras são linhas de referência. */}
-          <Link
-            href={featured.guide!}
-            className="group block border-t border-foreground py-10 transition-opacity hover:opacity-80"
-          >
-            <p className="font-mono text-sm text-muted-foreground">/{featured.slug}</p>
-            <p className="mt-4 max-w-3xl text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
-              {pick(featured.line, locale)}
-            </p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-              {t("index_guide")}
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </Link>
-
+          {/* Uma lista só com as seis: a única com guia abre com mais peso, as outras são linhas
+              de referência. Nome de skill é h2 para o leitor de tela navegar por título. */}
           <ol>
+            <li>
+              <Link
+                href={featured.guide!}
+                className="group block border-t border-foreground py-10 transition-opacity hover:opacity-80"
+              >
+                <h2 className="font-mono text-sm font-normal text-muted-foreground">/{featured.slug}</h2>
+                <p className="mt-4 max-w-3xl text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
+                  {pick(featured.line, locale)}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                  {t("index_guide")}
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            </li>
             {rest.map((skill) => (
               <li
                 key={skill.slug}
                 className="grid gap-2 border-t border-border py-6 md:grid-cols-[12rem_minmax(0,1fr)_auto] md:items-baseline md:gap-8"
               >
-                <p className="font-mono text-sm text-foreground">/{skill.slug}</p>
+                <h2 className="font-mono text-sm font-normal text-foreground">/{skill.slug}</h2>
                 <p className="text-base leading-relaxed text-muted-foreground">{pick(skill.line, locale)}</p>
                 <a
                   href={sourceUrl(skill.slug)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${t("index_source")}: ${skill.slug}`}
                   className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm text-foreground transition-opacity hover:opacity-60"
                 >
                   {t("index_source")}

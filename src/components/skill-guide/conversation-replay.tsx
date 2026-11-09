@@ -52,7 +52,8 @@ export function ConversationReplay({
             const target = turn.querySelector<HTMLElement>("[data-typed]");
             if (!target) return;
             // "words" junto: sem ele a palavra quebra no meio e a fala muda de altura ao reverter.
-            const split = SplitText.create(target, { type: "words,chars" });
+            // aria "hidden": os pedaços somem do leitor de tela; a cópia em sr-only ao lado é o texto lido.
+            const split = SplitText.create(target, { type: "words,chars", aria: "hidden" });
             splits.push(split);
             const step = Math.min(CHAR_STEP, TYPE_MAX / split.chars.length);
             gsap.from(split.chars, {
@@ -65,8 +66,10 @@ export function ConversationReplay({
               onComplete: () => split.revert(),
             });
           } else {
+            // opacity, não autoAlpha: visibility:hidden tiraria o texto da árvore de
+            // acessibilidade até o scroll chegar, e leitor de tela e IA leriam vazio.
             gsap.from(turn.querySelectorAll("[data-line]"), {
-              autoAlpha: 0,
+              opacity: 0,
               y: 6,
               duration: 0.35,
               stagger: 0.06,
@@ -93,7 +96,11 @@ export function ConversationReplay({
               <span aria-hidden className="select-none">
                 &gt;{" "}
               </span>
-              <span data-typed>{turn.text}</span>
+              {/* select-none: quem copia a fala não leva o texto duas vezes. */}
+              <span className="sr-only select-none">{turn.text}</span>
+              <span data-typed aria-hidden>
+                {turn.text}
+              </span>
             </p>
           ) : (
             <p key={i} data-turn="skill" className="text-foreground">

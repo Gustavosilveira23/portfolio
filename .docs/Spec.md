@@ -145,11 +145,19 @@ Servidor de teste foi para a porta 3458: `TaskStop` encerra o bash mas deixa o `
 
 ## F4. Verificação
 
-- [ ] `/design-review` na página (3 tamanhos de tela; o site só tem tema escuro).
-- [ ] Lighthouse (SEO e acessibilidade ≥ 95).
-- [ ] Rich Results Test sem erro no `TechArticle` e no `BreadcrumbList`.
+- [x] `/design-review` no guia e no índice (390, 768, 1440; só tema escuro). *(09/11: 4 bloqueantes
+      e 7 ajustes corrigidos. Conversa sem `visibility:hidden` e com texto em `sr-only`; ícones da nav
+      com nome e alvo de 26px; sumário sem rolagem animada com reduced-motion; data e comando sem
+      quebra no meio; botão Copiar com 44px e raio concêntrico; índice com 6 itens, nomes em h2 e
+      links com rótulo próprio; H2 a 16px do texto; alt vazio na foto do autor)*
+- [x] Lighthouse (SEO e acessibilidade ≥ 95). *(09/11, mobile: acessibilidade 100, best practices 100,
+      agentic browsing 100 nas duas páginas. SEO 92 só pelo canonical apontar para o domínio real
+      em teste local; reconferir em produção)*
+- [ ] Rich Results Test sem erro no `TechArticle` e no `BreadcrumbList`. *(09/11: validado localmente,
+      campos completos; `TechArticle` ganhou `image`. O teste do Google precisa da URL pública:
+      rodar depois do deploy)*
 - [x] ~~Bloco `[GUSTAVO]` e "every week"~~: saíram com o cartão de autor curto (04/11).
-- [ ] Rascunho `.docs/content/ux-research.en.md` apagado.
+- [x] Rascunho `.docs/content/ux-research.en.md` apagado. *(09/11)*
 - [ ] Push no `master` só com confirmação do Gustavo.
 
 ## O que NÃO vamos fazer

@@ -61,11 +61,11 @@ export async function SkillGuideArticle({ guide, locale }: { guide: SkillGuide; 
               Gustavo Silveira
             </Link>
             {" · "}
-            <time dateTime={guide.updated}>
+            <time dateTime={guide.updated} className="whitespace-nowrap">
               {t("updated")} {updated}
             </time>
             {" · "}
-            {t("min_read", { n: readingMinutes(guide, locale) })}
+            <span className="whitespace-nowrap">{t("min_read", { n: readingMinutes(guide, locale) })}</span>
             {" · "}
             <a
               href={`${REPO_URL}/tree/master/${guide.repoPath}`}
@@ -83,7 +83,7 @@ export async function SkillGuideArticle({ guide, locale }: { guide: SkillGuide; 
           <div className="min-w-0 max-w-2xl">
             {guide.sections.map((section) => (
               <section key={section.id} id={section.id} className="scroll-mt-28 pb-20">
-                <h2 className="mb-6 text-2xl font-medium tracking-tight text-foreground md:text-3xl">
+                <h2 className="mb-4 text-2xl font-medium tracking-tight text-foreground md:text-3xl">
                   {pick(section.title, locale)}
                 </h2>
                 <div className="space-y-6">
@@ -114,7 +114,7 @@ export async function SkillGuideArticle({ guide, locale }: { guide: SkillGuide; 
             <footer className="mt-24 flex items-start gap-4 border-t border-border pt-10">
               <Image
                 src="/gustavo_siveira.jpg"
-                alt="Gustavo Silveira"
+                alt=""
                 width={56}
                 height={56}
                 className="size-14 shrink-0 rounded-full object-cover"

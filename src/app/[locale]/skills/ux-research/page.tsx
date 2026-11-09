@@ -71,6 +71,8 @@ export default async function UxResearchGuidePage({
       inLanguage: locale === "pt" ? "pt-BR" : "en",
       url: pageUrl,
       mainEntityOfPage: pageUrl,
+      // A mesma imagem da OG; o Google recomenda image no Article.
+      image: `${BASE_URL}/${locale}/skills/ux-research/opengraph-image`,
       datePublished: guide.published,
       dateModified: guide.updated,
       author,

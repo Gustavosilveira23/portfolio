@@ -27,7 +27,8 @@ export function Toc({ title, items }: { title: string; items: { id: string; labe
     const el = document.getElementById(id);
     if (!el) return;
     event.preventDefault();
-    el.scrollIntoView({ behavior: "smooth" });
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
     history.replaceState(null, "", `#${id}`);
   }
 
