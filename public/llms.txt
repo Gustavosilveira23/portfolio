@@ -38,6 +38,13 @@
 - [Sonho Grande — School Dropout Prevention](https://gustavosilveira.com/portfolio/sonho-grande): Web and mobile app for Instituto Sonho Grande to help public school managers monitor dropout risk. UX, UI, and data visualization for social impact.
 - [Softruck — Tracking App Redesign](https://gustavosilveira.com/portfolio/softruck-redesign): Complete redesign of a vehicle tracking mobile app — usability, visual design, and feature expansion.
 
+## Guides
+
+Guides to the open source Claude Code skills Gustavo wrote (MIT, https://github.com/Gustavosilveira23/claude-design-skills). Each guide has a plain markdown version at the same URL plus `.md`.
+
+- [UX Research Skill for Claude Code](https://gustavosilveira.com/skills/ux-research): How to install and use the ux-research skill: guided start for first-time researchers, the four modes (plan, interview, synthesize, specify), where AI synthesis fails and how the skill guards against it. Markdown: https://gustavosilveira.com/skills/ux-research.md
+- [AI Skills](https://gustavosilveira.com/skills): Index of the six design skills (ux-research, ux-designer, ui-designer, design-system, creative-coding, figma-craft).
+
 ## Services Offered
 
 - AI product design and AI UX consulting

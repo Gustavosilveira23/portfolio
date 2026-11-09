@@ -2,8 +2,8 @@
 
 export type Locale = "en" | "pt";
 
-/** Texto nas duas línguas. `pt` é opcional até a tradução (F3); sem ele, cai no EN. */
-export type L = { en: string; pt?: string };
+/** Texto nas duas línguas. `pt` é obrigatório: o tipo cobra a tradução de todo campo novo. */
+export type L = { en: string; pt: string };
 
 export type GuideBlock =
   | { type: "p"; text: L }

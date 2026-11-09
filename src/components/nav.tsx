@@ -18,6 +18,7 @@ export function Nav() {
   const [overLight, setOverLight] = useState(false);
 
   const isHome = pathname === "/";
+  const onSkills = pathname === "/skills" || pathname.startsWith("/skills/");
 
   const sections = [
     { id: "services", label: t("services") },
@@ -122,6 +123,16 @@ export function Nav() {
               {section.label}
             </button>
           ))}
+
+          {/* Página própria, não seção da home: Link em vez de botão de rolagem */}
+          <Link
+            href="/skills"
+            className={`nav-highlight text-xs font-normal uppercase tracking-[1.8px] no-underline transition-opacity duration-200 text-foreground ${
+              onSkills ? "active" : ""
+            }`}
+          >
+            {t("skills")}
+          </Link>
 
           {/* Separator */}
           <span className="inline-block w-px h-3 bg-foreground/25" />
@@ -229,6 +240,15 @@ export function Nav() {
               {section.label}
             </button>
           ))}
+          <Link
+            href="/skills"
+            onClick={() => setMobileOpen(false)}
+            className={`block w-full py-2.5 text-xs font-normal text-foreground uppercase tracking-[1.8px] no-underline transition-opacity duration-200 hover:opacity-50 ${
+              onSkills ? "opacity-100" : "opacity-70"
+            }`}
+          >
+            {t("skills")}
+          </Link>
         </div>
       )}
     </header>

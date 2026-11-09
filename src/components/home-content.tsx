@@ -11,7 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Linkedin, Github, Calendar } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Linkedin, Github, Calendar } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 export function HomeContent() {
   const t = useTranslations();
@@ -171,7 +172,8 @@ export function HomeContent() {
                   title: t("creations.item1_title"),
                   type: t("creations.item1_type"),
                   desc: t("creations.item1_desc"),
-                  url: "https://github.com/Gustavosilveira23/claude-design-skills",
+                  // Interno: o índice /skills leva ao guia e ao GitHub. Link interno da home pesa para busca.
+                  url: "/skills",
                 },
                 {
                   title: t("creations.item2_title"),
@@ -185,14 +187,10 @@ export function HomeContent() {
                   desc: t("creations.item3_desc"),
                   url: "https://www.linkedin.com/feed/update/urn:li:activity:7355953891198271488/",
                 },
-              ].map((item, i) => (
-                <ScrollReveal key={item.title} delay={i * 0.08}>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block"
-                  >
+              ].map((item, i) => {
+                const internal = item.url.startsWith("/");
+                const Arrow = internal ? ArrowRight : ArrowUpRight;
+                const card = (
                     <div className="bg-surface-2 rounded-[20px] p-8 md:p-10 hover:bg-surface-3 transition-colors duration-300">
                       <div className="flex items-start justify-between gap-4 mb-4">
                         <div>
@@ -203,18 +201,32 @@ export function HomeContent() {
                             {item.title}
                           </h3>
                         </div>
-                        <ArrowUpRight
+                        <Arrow
                           size={20}
-                          className="text-muted-foreground shrink-0 mt-1 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                          className={`text-muted-foreground shrink-0 mt-1 group-hover:text-foreground group-hover:translate-x-0.5 transition-all ${
+                            internal ? "" : "group-hover:-translate-y-0.5"
+                          }`}
                         />
                       </div>
                       <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
                         {item.desc}
                       </p>
                     </div>
-                  </a>
-                </ScrollReveal>
-              ))}
+                );
+                return (
+                  <ScrollReveal key={item.title} delay={i * 0.08}>
+                    {internal ? (
+                      <Link href={item.url} className="group block">
+                        {card}
+                      </Link>
+                    ) : (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="group block">
+                        {card}
+                      </a>
+                    )}
+                  </ScrollReveal>
+                );
+              })}
             </div>
           </div>
         </div>

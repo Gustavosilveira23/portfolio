@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { pick, readingMinutes, type Locale, type SkillGuide } from "@/content/skills";
+import { pick, readingMinutes, REPO_URL, type Locale, type SkillGuide } from "@/content/skills";
 import { Block, type BlockLabels } from "./blocks";
 import { InlineText } from "./inline";
 import { Toc } from "./toc";
@@ -67,7 +67,14 @@ export async function SkillGuideArticle({ guide, locale }: { guide: SkillGuide; 
             {" · "}
             {t("min_read", { n: readingMinutes(guide, locale) })}
             {" · "}
-            {t("license")}
+            <a
+              href={`${REPO_URL}/tree/master/${guide.repoPath}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground transition-opacity hover:opacity-60"
+            >
+              {t("license")}
+            </a>
           </p>
         </header>
 

@@ -5,6 +5,7 @@
     "about": "About",
     "portfolio": "Portfolio",
     "process": "Process",
+    "skills": "AI Skills",
     "contact": "Contact"
   },
   "hero": {
@@ -116,7 +117,7 @@
     "built_with": "Built with Next.js, Tailwind CSS, and Claude Code"
   },
   "skills": {
-    "breadcrumb_root": "Claude Skills",
+    "breadcrumb_root": "AI Skills",
     "on_this_page": "On this page",
     "updated": "Updated",
     "min_read": "{n} min read",
@@ -128,6 +129,11 @@
     "copy_aria": "Copy the install command",
     "terminal": "Claude Code",
     "by": "By",
-    "shell": "Terminal"
+    "shell": "Terminal",
+    "index_guide": "Read the guide",
+    "index_source": "SKILL.md on GitHub",
+    "copy_all_aria": "Copy the command that installs all six skills",
+    "index_repo": "Repository on GitHub",
+    "index_list": "The six skills"
   }
 }

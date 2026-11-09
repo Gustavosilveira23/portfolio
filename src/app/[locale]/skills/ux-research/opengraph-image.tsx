@@ -55,7 +55,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
               fontWeight: 500,
             }}
           >
-            Claude Skills
+            AI Skills
           </div>
           <div
             style={{

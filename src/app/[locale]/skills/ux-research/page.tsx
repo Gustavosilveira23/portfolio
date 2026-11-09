@@ -88,7 +88,7 @@ export default async function UxResearchGuidePage({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Claude Skills", item: `${BASE_URL}${prefix}/skills` },
+        { "@type": "ListItem", position: 1, name: "AI Skills", item: `${BASE_URL}${prefix}/skills` },
         { "@type": "ListItem", position: 2, name: pick(guide.breadcrumb, locale), item: pageUrl },
       ],
     },

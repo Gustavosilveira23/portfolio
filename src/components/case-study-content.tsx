@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollIndicator } from "@/components/scroll-indicator";
 import { ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import type { Project } from "@/content/projects";
+import { InlineText } from "@/components/skill-guide/inline";
 
 function parseFindingsFromDecisions(
   decisions: string
@@ -62,7 +63,8 @@ function ContentBlock({
       <div className="text-base text-foreground leading-relaxed">
         {content.split("\n\n").map((p, i) => (
           <p key={i} className="mb-4 last:mb-0">
-            {p}
+            {/* Mesma marcação dos guias: deixa o case linkar para /skills/... sem HTML no conteúdo. */}
+            <InlineText text={p} />
           </p>
         ))}
       </div>
