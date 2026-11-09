@@ -73,8 +73,9 @@ export default async function UxResearchGuidePage({
       mainEntityOfPage: pageUrl,
       // A mesma imagem da OG; o Google recomenda image no Article.
       image: `${BASE_URL}/${locale}/skills/ux-research/opengraph-image`,
-      datePublished: guide.published,
-      dateModified: guide.updated,
+      // Data com hora e fuso: o Rich Results Test acusa "datetime sem fuso" na data pura.
+      datePublished: `${guide.published}T12:00:00-03:00`,
+      dateModified: `${guide.updated}T12:00:00-03:00`,
       author,
       publisher: author,
       about: {
