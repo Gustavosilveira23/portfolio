@@ -1,14 +1,18 @@
 import { ImageResponse } from "next/og";
-import { uxResearchGuide as guide, pick } from "@/content/skills";
+import { getGuide, pick } from "@/content/skills";
 
 // Mesmo desenho da imagem de case. Arquivo próprio porque a página define `openGraph` na
 // metadata, e isso substitui o bloco do pai, imagem incluída.
-export const alt = "UX Research skill for Claude Code, by Gustavo Silveira";
+// alt fixo: o export não recebe o slug, e generateImageMetadata mudaria a URL da imagem.
+export const alt = "Guide to a Claude Code skill, by Gustavo Silveira";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = (await params).locale === "pt" ? "pt" : "en";
+export default async function Image({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: raw, slug } = await params;
+  const locale = raw === "pt" ? "pt" : "en";
+  const guide = getGuide(slug);
+  if (!guide) return new Response("Not found", { status: 404 });
   const title = pick(guide.h1, locale);
   const description = pick(guide.meta.description, locale);
   const prefix = locale === "pt" ? "/pt" : "";
@@ -82,8 +86,8 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             letterSpacing: 1,
           }}
         >
-          <span>gustavosilveira.com{prefix}/skills/ux-research</span>
-          <span style={{ color: "#888", fontFamily: "monospace" }}>/ux-research</span>
+          <span>gustavosilveira.com{prefix}/skills/{guide.slug}</span>
+          <span style={{ color: "#888", fontFamily: "monospace" }}>/{guide.slug}</span>
         </div>
       </div>
     ),

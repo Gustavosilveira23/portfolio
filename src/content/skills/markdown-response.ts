@@ -1,11 +1,12 @@
 import { BASE_URL } from "@/lib/seo";
 import { guideToMarkdown } from "./to-markdown";
-import { REPO_URL, uxResearchGuide } from "./index";
-import type { Locale } from "./types";
+import { REPO_URL } from "./index";
+import type { Locale, SkillGuide } from "./types";
 
-export function markdownResponse(locale: Locale) {
-  const body = guideToMarkdown(uxResearchGuide, locale, REPO_URL);
-  const canonical = `${BASE_URL}${locale === "pt" ? "/pt" : ""}/skills/${uxResearchGuide.slug}`;
+// Uma pasta de rota por guia (src/app/skills/<slug>.md): o Next não aceita segmento "[slug].md".
+export function markdownResponse(guide: SkillGuide, locale: Locale) {
+  const body = guideToMarkdown(guide, locale, REPO_URL);
+  const canonical = `${BASE_URL}${locale === "pt" ? "/pt" : ""}/skills/${guide.slug}`;
   return new Response(body, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",

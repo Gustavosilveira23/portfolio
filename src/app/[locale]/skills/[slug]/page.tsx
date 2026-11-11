@@ -1,22 +1,33 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { SkillGuideArticle } from "@/components/skill-guide/skill-guide";
 import { stripInline } from "@/components/skill-guide/inline";
-import { uxResearchGuide as guide, pick, REPO_URL, type Locale } from "@/content/skills";
+import { getGuide, guides, pick, REPO_URL, type Locale } from "@/content/skills";
 import { BASE_URL, localeAlternates } from "@/lib/seo";
 
-const PATH = "/skills/ux-research";
+// Uma rota para todos os guias. Só os slugs do registro existem; o resto é 404.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return Object.keys(guides).flatMap((slug) => [
+    { locale: "en", slug },
+    { locale: "pt", slug },
+  ]);
+}
+
+type Params = Promise<{ locale: string; slug: string }>;
 
 function toLocale(locale: string): Locale {
   return locale === "pt" ? "pt" : "en";
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const locale = toLocale((await params).locale);
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { locale: raw, slug } = await params;
+  const locale = toLocale(raw);
+  const guide = getGuide(slug);
+  if (!guide) return {};
+  const PATH = `/skills/${guide.slug}`;
   const title = pick(guide.meta.title, locale);
   const description = pick(guide.meta.description, locale);
   const url = locale === "pt" ? `/pt${PATH}` : PATH;
@@ -44,13 +55,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function UxResearchGuidePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const locale = toLocale((await params).locale);
+export default async function SkillGuidePage({ params }: { params: Params }) {
+  const { locale: raw, slug } = await params;
+  const locale = toLocale(raw);
   setRequestLocale(locale);
+  const guide = getGuide(slug);
+  if (!guide) notFound();
+  const PATH = `/skills/${guide.slug}`;
 
   const prefix = locale === "pt" ? "/pt" : "";
   const pageUrl = `${BASE_URL}${prefix}${PATH}`;
@@ -72,7 +83,7 @@ export default async function UxResearchGuidePage({
       url: pageUrl,
       mainEntityOfPage: pageUrl,
       // A mesma imagem da OG; o Google recomenda image no Article.
-      image: `${BASE_URL}/${locale}/skills/ux-research/opengraph-image`,
+      image: `${BASE_URL}/${locale}${PATH}/opengraph-image`,
       // Data com hora e fuso: o Rich Results Test acusa "datetime sem fuso" na data pura.
       datePublished: `${guide.published}T12:00:00-03:00`,
       dateModified: `${guide.updated}T12:00:00-03:00`,
@@ -80,7 +91,7 @@ export default async function UxResearchGuidePage({
       publisher: author,
       about: {
         "@type": "SoftwareSourceCode",
-        name: "ux-research",
+        name: guide.slug,
         description: stripInline(pick(guide.lead, locale)),
         codeRepository: `${REPO_URL}/tree/master/${guide.repoPath}`,
         license: "https://opensource.org/licenses/MIT",
