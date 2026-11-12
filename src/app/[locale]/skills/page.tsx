@@ -57,7 +57,9 @@ export default async function SkillsIndexPage({
     },
   };
 
-  const [featured, ...rest] = catalog;
+  // Toda skill com guia vira bloco de destaque; as sem guia ficam em linha.
+  const withGuide = catalog.filter((skill) => skill.guide);
+  const rest = catalog.filter((skill) => !skill.guide);
 
   return (
     <article className="px-6 pb-32 pt-32 md:px-12 md:pt-40">
@@ -94,24 +96,26 @@ export default async function SkillsIndexPage({
         </header>
 
         <section aria-label={t("index_list")} className="mt-20 md:mt-28">
-          {/* Uma lista só com as seis: a única com guia abre com mais peso, as outras são linhas
+          {/* Uma lista só com as seis: as que têm guia abrem com mais peso, as outras são linhas
               de referência. Nome de skill é h2 para o leitor de tela navegar por título. */}
           <ol>
-            <li>
-              <Link
-                href={featured.guide!}
-                className="group block border-t border-foreground py-10 transition-opacity hover:opacity-80"
-              >
-                <h2 className="font-mono text-sm font-normal text-muted-foreground">/{featured.slug}</h2>
-                <p className="mt-4 max-w-3xl text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
-                  {pick(featured.line, locale)}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                  {t("index_guide")}
-                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            </li>
+            {withGuide.map((skill) => (
+              <li key={skill.slug}>
+                <Link
+                  href={skill.guide!}
+                  className="group block border-t border-foreground py-10 transition-opacity hover:opacity-80"
+                >
+                  <h2 className="font-mono text-sm font-normal text-muted-foreground">/{skill.slug}</h2>
+                  <p className="mt-4 max-w-3xl text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
+                    {pick(skill.line, locale)}
+                  </p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                    {t("index_guide")}
+                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </li>
+            ))}
             {rest.map((skill) => (
               <li
                 key={skill.slug}

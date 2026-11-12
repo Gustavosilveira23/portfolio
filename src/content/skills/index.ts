@@ -1,12 +1,14 @@
 import type { SkillGuide } from "./types";
+import { uxDesignerGuide } from "./ux-designer";
 import { uxResearchGuide } from "./ux-research";
 
 export * from "./types";
-export { uxResearchGuide };
+export { uxDesignerGuide, uxResearchGuide };
 
 /** Guias publicados, por slug. A rota /skills/[slug], o sitemap e o índice leem daqui. */
 export const guides: Record<string, SkillGuide> = {
   [uxResearchGuide.slug]: uxResearchGuide,
+  [uxDesignerGuide.slug]: uxDesignerGuide,
 };
 
 export function getGuide(slug: string): SkillGuide | undefined {

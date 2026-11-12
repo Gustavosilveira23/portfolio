@@ -1,5 +1,5 @@
 // As 6 skills do repo claude-design-skills, na ordem do pipeline. Texto do índice /skills.
-// Só a ux-research tem guia; as outras levam para o SKILL.md no GitHub.
+// As que têm guia levam para ele; as outras, para o SKILL.md no GitHub.
 // "60-30-10" leva U+2060 (word joiner) depois de cada hífen: não quebra a linha ali, e a Geist
 // não tem glyph para o hífen não separável U+2011.
 
@@ -42,6 +42,7 @@ export const catalog: CatalogEntry[] = [
   },
   {
     slug: "ux-designer",
+    guide: "/skills/ux-designer",
     line: {
       en: "Asks who the user is before building, designs the flow instead of a single screen and audits interfaces with a five-part scorecard.",
       pt: "Pergunta quem é o usuário antes de construir, desenha o fluxo em vez da tela solta e audita interfaces com um scorecard de cinco critérios.",

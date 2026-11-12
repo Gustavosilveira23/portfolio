@@ -68,9 +68,9 @@ pasta no turno 1.
   `/skills/ux-designer`.
 
 **Pronto quando**
-- [ ] Texto passou no checklist anti-IA, sem travessão, nenhum número sem fonte.
-- [ ] 390px sem rolagem horizontal; blocos de código com até 68 colunas.
-- [ ] Manual (Gustavo): leitura do texto EN no navegador.
+- [x] Texto passou no checklist anti-IA, sem travessão, nenhum número sem fonte. *(11/11; números da seção de limites reconferidos lendo Baymard, arXiv 2507.02306 e Napoli)*
+- [x] 390px sem rolagem horizontal; blocos de código com até 68 colunas. *(11/11; lead termina em 703 de 844px depois de cortar a última frase)*
+- [x] Manual (Gustavo): leitura do texto EN no navegador. *(12/11)*
 
 ### F3. PT, SEO e distribuição
 

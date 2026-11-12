@@ -491,8 +491,8 @@ RECOMENDAÇÃO  Deixar o admin marcar uma reunião de teste com
         {
           type: "p",
           text: {
-            en: "When the insights are solid, this mode writes the brief for whoever designs next. In my setup that is the [ux-designer skill](/skills), but the brief works for a person too.",
-            pt: "Quando os insights estão sólidos, este modo escreve o brief para quem desenha em seguida. No meu setup é a [skill ux-designer](/skills), mas o brief serve para uma pessoa também.",
+            en: "When the insights are solid, this mode writes the brief for whoever designs next. In my setup that is the [ux-designer skill](/skills/ux-designer), but the brief works for a person too.",
+            pt: "Quando os insights estão sólidos, este modo escreve o brief para quem desenha em seguida. No meu setup é a [skill ux-designer](/skills/ux-designer), mas o brief serve para uma pessoa também.",
           },
         },
         {
