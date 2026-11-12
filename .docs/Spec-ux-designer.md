@@ -85,7 +85,10 @@ pasta no turno 1.
 
 ### F4. Verificação e publicação
 
-- [ ] `/design-review` (390, 768, 1440) no guia novo e no índice.
+- [x] `/design-review` (390, 768, 1440) no guia novo e no índice. *(12/11: 0 bloqueantes, 3 ajustes
+      corrigidos em 3b2283c: tabela sem largura mínima abaixo de sm, `th scope="row"`, campo
+      opcional `total` na tabela (desvio pequeno da regra "sem tipo de bloco novo", aprovado),
+      "Error 403" no PT)*
 - [ ] Lighthouse em produção: as 4 notas ≥ 95.
 - [ ] Rich Results Test em produção sem aviso.
 - [ ] Apagar `.docs/content/ux-designer-session.md` e `ux-designer-audit.html`.
