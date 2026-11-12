@@ -80,8 +80,8 @@ pasta no turno 1.
 - README do repo de skills: linha "Full guide" na seção da ux-designer (push com confirmação).
 
 **Pronto quando**
-- [ ] Nenhum `TODO-PT`; página PT com `lang`, título, H1, JSON-LD e `.md` em PT.
-- [ ] Manual (Gustavo): revisão do PT.
+- [x] Nenhum `TODO-PT`; página PT com `lang`, título, H1, JSON-LD e `.md` em PT. *(12/11; os 103 textos EN conferidos idênticos ao aprovado; lead PT termina em 798 de 844px a 390)*
+- [x] Manual (Gustavo): revisão do PT. *(12/11)*
 
 ### F4. Verificação e publicação
 

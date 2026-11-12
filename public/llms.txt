@@ -43,6 +43,7 @@
 Guides to the open source Claude Code skills Gustavo wrote (MIT, https://github.com/Gustavosilveira23/claude-design-skills). Each guide has a plain markdown version at the same URL plus `.md`.
 
 - [UX Research Skill for Claude Code](https://gustavosilveira.com/skills/ux-research): How to install and use the ux-research skill: guided start for first-time researchers, the four modes (plan, interview, synthesize, specify), where AI synthesis fails and how the skill guards against it. Markdown: https://gustavosilveira.com/skills/ux-research.md
+- [UX Designer Skill for Claude Code](https://gustavosilveira.com/skills/ux-designer): How the ux-designer skill works, shown on a recorded session: it asks who uses the interface before building, presents a UX strategy before code, pushes back on requests that hurt the experience, and audits screens with a score out of 10 or a CLEAR scorecard. Includes what research says about AI accuracy in UX audits. Markdown: https://gustavosilveira.com/skills/ux-designer.md
 - [AI Skills](https://gustavosilveira.com/skills): Index of the six design skills (ux-research, ux-designer, ui-designer, design-system, creative-coding, figma-craft).
 
 ## Services Offered
