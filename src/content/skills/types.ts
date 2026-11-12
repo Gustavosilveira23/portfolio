@@ -9,7 +9,8 @@ export type GuideBlock =
   | { type: "p"; text: L }
   /** `wrap`: texto corrido (um prompt) quebra a linha; saída com colunas alinhadas rola no celular. */
   | { type: "code"; label?: L; code: L; wrap?: boolean }
-  | { type: "table"; head: L[]; rows: L[][] }
+  /** `total`: a última linha soma as de cima (ganha borda de fechamento, não uma cor nova). */
+  | { type: "table"; head: L[]; rows: L[][]; total?: boolean }
   | { type: "list"; items: L[] }
   | { type: "callout"; label: L; text: L }
   | { type: "install"; command: string }

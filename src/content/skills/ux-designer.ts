@@ -278,7 +278,7 @@ Em vez disso: mantenha o pular como um link discreto, pergunte "O que está impe
               { en: "1/5", pt: "1/5" },
               {
                 en: "Describes what the system needs, not what the admin gets. Raw scope codes, a \"Submit\" button and a fake \"Error 403\".",
-                pt: "Descreve o que o sistema precisa, não o que o admin ganha. Códigos de permissão crus, um botão \"Enviar\" e um \"Erro 403\" falso.",
+                pt: "Descreve o que o sistema precisa, não o que o admin ganha. Códigos de permissão crus, um botão \"Enviar\" e um \"Error 403\" falso.",
               },
             ],
             [
@@ -322,6 +322,7 @@ Em vez disso: mantenha o pular como um link discreto, pergunte "O que está impe
               },
             ],
           ],
+          total: true,
         },
         {
           type: "code",

@@ -30,7 +30,10 @@ function block(b: GuideBlock, locale: Locale): string {
     case "table": {
       const head = `| ${b.head.map((h) => cell(pick(h, locale))).join(" | ")} |`;
       const sep = `| ${b.head.map(() => "---").join(" | ")} |`;
-      const rows = b.rows.map((r) => `| ${r.map((c) => cell(pick(c, locale))).join(" | ")} |`);
+      const rows = b.rows.map((r, i) => {
+        const isTotal = b.total && i === b.rows.length - 1;
+        return `| ${r.map((c) => (isTotal ? `**${cell(pick(c, locale))}**` : cell(pick(c, locale)))).join(" | ")} |`;
+      });
       return [head, sep, ...rows].join("\n");
     }
     case "list":

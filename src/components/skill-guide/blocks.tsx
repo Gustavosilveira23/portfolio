@@ -50,7 +50,8 @@ export function Block({
     case "table":
       return (
         <div className="scrollbar-subtle overflow-x-auto">
-          <table className="w-full min-w-lg text-left text-sm">
+          {/* No celular a tabela cabe na coluna e o texto quebra; a largura mínima só a partir de sm. */}
+          <table className="w-full text-left text-sm sm:min-w-lg">
             <thead>
               <tr>
                 {block.head.map((cell, i) => (
@@ -61,20 +62,33 @@ export function Block({
               </tr>
             </thead>
             <tbody>
-              {block.rows.map((row, r) => (
-                <tr key={r} className="border-t border-border">
-                  {row.map((cell, c) => (
-                    <td
-                      key={c}
-                      className={`py-3 pr-4 align-top leading-relaxed ${
-                        c === 0 ? "font-medium text-foreground" : "text-muted-foreground"
-                      }`}
-                    >
-                      {pick(cell, locale)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {block.rows.map((row, r) => {
+                const isTotal = block.total && r === block.rows.length - 1;
+                return (
+                  <tr key={r} className={`border-t ${isTotal ? "border-foreground" : "border-border"}`}>
+                    {row.map((cell, c) =>
+                      c === 0 ? (
+                        <th
+                          key={c}
+                          scope="row"
+                          className="py-3 pr-4 align-top font-medium leading-relaxed text-foreground"
+                        >
+                          {pick(cell, locale)}
+                        </th>
+                      ) : (
+                        <td
+                          key={c}
+                          className={`py-3 pr-4 align-top leading-relaxed ${
+                            isTotal ? "text-foreground" : "text-muted-foreground"
+                          }`}
+                        >
+                          {pick(cell, locale)}
+                        </td>
+                      ),
+                    )}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
