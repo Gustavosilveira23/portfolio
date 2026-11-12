@@ -89,10 +89,13 @@ pasta no turno 1.
       corrigidos em 3b2283c: tabela sem largura mínima abaixo de sm, `th scope="row"`, campo
       opcional `total` na tabela (desvio pequeno da regra "sem tipo de bloco novo", aprovado),
       "Error 403" no PT)*
-- [ ] Lighthouse em produção: as 4 notas ≥ 95.
-- [ ] Rich Results Test em produção sem aviso.
+- [x] Lighthouse em produção: as 4 notas ≥ 95. *(12/11: 100/100/100/100 em EN e PT, mobile)*
+- [x] Rich Results Test em produção sem aviso. *(12/11: a ferramenta do Google passou a pedir
+      login; JSON-LD conferido por script no HTML de produção: TechArticle com image e datas com
+      fuso, BreadcrumbList, FAQPage com 8 perguntas, nas duas línguas. Rodar o teste logado quando
+      der)*
+- [x] Push no `master` com confirmação. *(12/11, b18ab9f)*
 - [ ] Apagar `.docs/content/ux-designer-session.md` e `ux-designer-audit.html`.
-- [ ] Push no `master` só com confirmação.
 
 ## O que NÃO vamos fazer
 
