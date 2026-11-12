@@ -55,6 +55,34 @@ O array `images` tem posições fixas no layout do case:
 Formato obrigatório: `1. **Título**: corpo`. Nenhum "número seguido de ponto e espaço" dentro do
 corpo, senão o item se parte em dois.
 
+## Adicionar um guia de skill (`/skills/<slug>`)
+
+A página é uma rota só (`src/app/[locale]/skills/[slug]/`), que lê o guia de um registro. Guia novo:
+
+1. `src/content/skills/<slug>.ts` no modelo `SkillGuide` (`types.ts`). Todo texto é `{ en, pt }`, e
+   o `pt` é obrigatório. Blocos de código com até 68 colunas, para não rolar no tablet.
+2. Entrada em `guides`, em `src/content/skills/index.ts`. Página, OG, `generateStaticParams` e
+   sitemap puxam dali.
+3. Duas rotas `.md` (o Next não aceita segmento `[slug].md`): copiar
+   `src/app/skills/ux-designer.md/route.ts` e `src/app/pt/skills/ux-designer.md/route.ts`.
+4. `guide: "/skills/<slug>"` em `catalog.ts` (vira bloco de destaque no índice), uma linha em
+   `public/llms.txt` e o link "Full guide" no README do repo `claude-design-skills`.
+
+Material bruto de sessão gravada não entra no git: listar em `.git/info/exclude` antes do primeiro
+commit e apagar depois de publicar. PRD e Spec de cada guia ficam em `.docs/`.
+
+## Verificar em produção
+
+- O domínio principal é **sem `www`** (desde 11/11/2026); o `www` faz 308 para ele. Canonical que
+  aponta para o `www` é bug.
+- Lighthouse: Chrome DevTools MCP, `lighthouse_audit` com `device: mobile`. Meta: as 4 notas ≥ 95.
+  Em localhost o SEO dá 92 por causa do canonical; só vale a nota de produção.
+- **Testar EN:** o navegador desta máquina manda o idioma como PT e o site redireciona para `/pt`.
+  Usar contexto isolado com cookie `NEXT_LOCALE=en` (ou cabeçalho `Accept-Language: en`).
+- **Rich Results Test pede login desde nov/2026.** Sem login, conferir o JSON-LD com
+  `python .docs/check-jsonld.py <url> [<url>...]` (datas com fuso, `image`, breadcrumb, FAQ) e
+  deixar o teste oficial para o Gustavo rodar logado.
+
 ## Regras de conteúdo
 
 - **Métrica interna de empresa ou cliente não entra em case**, nem no texto nem visível em
