@@ -12,7 +12,7 @@ export const uxDesignerGuide: SkillGuide = {
   slug: "ux-designer",
   repoPath: "skills/ux-designer",
   published: "2026-11-11",
-  updated: "2026-11-11",
+  updated: "2026-11-18",
   meta: {
     title: { en: "UX Designer Skill for Claude Code", pt: "Skill de UX Design para o Claude Code" },
     description: {
@@ -301,8 +301,8 @@ Em vez disso: mantenha o pular como um link discreto, pergunte "O que está impe
               { en: "Accessibility", pt: "Accessibility" },
               { en: "1/5", pt: "1/5" },
               {
-                en: "Provider tiles can't be reached by keyboard. 5 of 6 color pairs fail contrast.",
-                pt: "Os provedores não são alcançáveis pelo teclado. 5 de 6 pares de cor reprovam no contraste.",
+                en: "Provider tiles can't be reached by keyboard. 4 of 6 color pairs fail contrast.",
+                pt: "Os provedores não são alcançáveis pelo teclado. 4 de 6 pares de cor reprovam no contraste.",
               },
             ],
             [
@@ -579,8 +579,8 @@ Permissões de diretório costumam exigir aprovação da TI.`,
         pt: "Dá para usar junto com as outras skills de design?",
       },
       a: {
-        en: "That's how I use them. [ux-research](/skills/ux-research) gathers the evidence and writes the brief, ux-designer turns it into a flow, and ui-designer handles the visual craft. Each one hands off to the next and says so when another fits better. All six are in the [index](/skills).",
-        pt: "É assim que eu uso. A [ux-research](/skills/ux-research) reúne a evidência e escreve o brief, a ux-designer desenha o fluxo a partir dele e a ui-designer cuida do acabamento visual. Cada uma passa para a seguinte e avisa quando outra serve melhor. As seis estão no [índice](/skills).",
+        en: "That's how I use them. [ux-research](/skills/ux-research) gathers the evidence and writes the brief, ux-designer turns it into a flow, and [ui-designer](/skills/ui-designer) handles the visual craft. Each one hands off to the next and says so when another fits better. All six are in the [index](/skills).",
+        pt: "É assim que eu uso. A [ux-research](/skills/ux-research) reúne a evidência e escreve o brief, a ux-designer desenha o fluxo a partir dele e a [ui-designer](/skills/ui-designer) cuida do acabamento visual. Cada uma passa para a seguinte e avisa quando outra serve melhor. As seis estão no [índice](/skills).",
       },
     },
     {
