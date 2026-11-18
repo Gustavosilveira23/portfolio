@@ -246,11 +246,14 @@ o guia ux-research não cita a ui-designer.
       de "before" ("checks the rendered screen itself"); comentário de Brand/Product: "context" no
       corpo, "mode" no lead/meta/índice. Adiados com o Gustavo: três blocos de guia iguais no índice
       (DESIGN.md §6, decisão separada) e metade vazia do "antes" (efeito da regra de mesmo recorte))*
-- [ ] Lighthouse em produção: as 4 notas ≥ 95, EN e PT (a figura não pode derrubar o LCP).
-- [ ] `python .docs/check-jsonld.py` nas duas URLs de produção; Rich Results logado fica com o Gustavo.
-- [ ] Push no `master` com confirmação (leva junto 47c8a24 e 5e6a657).
-- [ ] Push do README do repo de skills com confirmação.
-- [ ] Apagar `.docs/content/ui-designer-*` e a pasta `ui-demo/` do scratchpad.
+- [x] Lighthouse em produção: as 4 notas ≥ 95, EN e PT (a figura não pode derrubar o LCP).
+      *(18/11, mobile: acessibilidade, boas práticas, SEO e agentic browsing 100 nas duas línguas.
+      A ferramenta do MCP não mede performance; a figura é lazy e fica abaixo da dobra. EN medido
+      trocando o cookie NEXT_LOCALE na página antes de navegar: o cabeçalho extra não bastou)*
+- [x] `python .docs/check-jsonld.py` nas duas URLs de produção; Rich Results logado fica com o Gustavo.
+- [x] Push no `master` com confirmação (leva junto 47c8a24 e 5e6a657). *(18/11: b18ab9f..34182cf)*
+- [x] Push do README do repo de skills com confirmação. *(18/11: de37707..3710eae)*
+- [x] Apagar `.docs/content/ui-designer-*` e a pasta `ui-demo/` do scratchpad. *(18/11)*
 
 ## Ordem e por quê
 
