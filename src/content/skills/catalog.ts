@@ -50,9 +50,10 @@ export const catalog: CatalogEntry[] = [
   },
   {
     slug: "ui-designer",
+    guide: "/skills/ui-designer",
     line: {
-      en: "Spacing on an 8pt grid, a type scale, the 60-⁠30-⁠10 color rule and a seven-point check that runs before any UI goes out.",
-      pt: "Espaçamento em grid de 8pt, escala tipográfica, regra de cor 60-⁠30-⁠10 e uma checagem de sete pontos antes de qualquer tela sair.",
+      en: "Reads your project's tokens before it styles, works in brand or product mode and checks the rendered screen itself.",
+      pt: "Lê os tokens do projeto antes de estilizar, trabalha em modo marca ou produto e confere a tela renderizada por conta própria.",
     },
   },
   {
