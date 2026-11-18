@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { pick, type GuideBlock, type Locale } from "@/content/skills";
 import { InlineText } from "./inline";
 import { CopyCommand } from "./copy-command";
@@ -10,6 +11,7 @@ export type BlockLabels = {
   copyAria: string;
   terminal: string;
   shell: string;
+  fullSize: string;
 };
 
 const labelClass = "text-xs uppercase tracking-[1.8px] text-muted-foreground";
@@ -130,6 +132,54 @@ export function Block({
           labelClass={labelClass}
           turns={block.turns.map((turn) => ({ role: turn.role, text: pick(turn.text, locale) }))}
         />
+      );
+
+    case "figure":
+      return (
+        <ScrollReveal>
+          {/* space-y-6: a legenda vale para o par; no celular ela fica mais longe da última imagem
+              do que as imagens ficam entre si (gap-4). */}
+          <figure className="space-y-6">
+            {/* Duas imagens ficam lado a lado a partir de sm; no celular empilham. */}
+            <div className={`grid gap-4 ${block.images.length > 1 ? "sm:grid-cols-2" : ""}`}>
+              {block.images.map((image) => (
+                // Na coluna a imagem sai a ~23% do arquivo e o texto da tela não se lê: o item
+                // inteiro abre o PNG original. Rótulo, dica e imagem formam um link só (um foco).
+                <a
+                  key={image.src}
+                  href={image.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block space-y-2"
+                >
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className={labelClass}>{pick(image.label, locale)}</span>
+                    <span
+                      aria-hidden="true"
+                      className="text-xs text-muted-foreground underline underline-offset-4 transition-colors group-hover:text-foreground"
+                    >
+                      {labels.fullSize}
+                    </span>
+                  </div>
+                  <div className="overflow-hidden rounded-xl border border-border transition-colors group-hover:border-muted-foreground">
+                    <Image
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={pick(image.alt, locale)}
+                      // A coluna do artigo tem no máximo 672px: lado a lado, cada imagem ocupa ~330px.
+                      sizes="(min-width: 640px) 336px, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
+                </a>
+              ))}
+            </div>
+            <figcaption className="text-sm leading-relaxed text-muted-foreground">
+              {pick(block.caption, locale)}
+            </figcaption>
+          </figure>
+        </ScrollReveal>
       );
   }
 }

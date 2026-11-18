@@ -14,7 +14,13 @@ export type GuideBlock =
   | { type: "list"; items: L[] }
   | { type: "callout"; label: L; text: L }
   | { type: "install"; command: string }
-  | { type: "conversation"; turns: { role: "user" | "skill"; text: L }[] };
+  | { type: "conversation"; turns: { role: "user" | "skill"; text: L }[] }
+  /** Antes e depois de uma tela gerada na demo (1 ou 2 imagens). Regras em DESIGN.md, "Imagem de guia". */
+  | {
+      type: "figure";
+      images: { src: string; width: number; height: number; label: L; alt: L }[];
+      caption: L;
+    };
 
 /** `nav` é o rótulo curto do sumário lateral; o título do H2 é longo demais para lá. */
 export type GuideSection = { id: string; nav: L; title: L; blocks: GuideBlock[] };
@@ -51,6 +57,7 @@ function plainText(guide: SkillGuide, locale: Locale) {
       if (block.type === "list") parts.push(...block.items.map((i) => pick(i, locale)));
       if (block.type === "table") parts.push(...block.rows.flat().map((c) => pick(c, locale)));
       if (block.type === "conversation") parts.push(...block.turns.map((t) => pick(t.text, locale)));
+      if (block.type === "figure") parts.push(pick(block.caption, locale));
     }
   }
   for (const item of guide.faq) parts.push(pick(item.q, locale), pick(item.a, locale));

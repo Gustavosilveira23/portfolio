@@ -130,6 +130,7 @@
     "terminal": "Claude Code",
     "by": "By",
     "shell": "Terminal",
+    "full_size": "View full size",
     "index_guide": "Read the guide",
     "index_source": "SKILL.md on GitHub",
     "copy_all_aria": "Copy the command that installs all six skills",

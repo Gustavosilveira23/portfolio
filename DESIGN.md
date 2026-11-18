@@ -79,6 +79,18 @@ Regras:
 - As posições `[2]` e `[4]` aparecem lado a lado: as duas precisam ter proporção parecida, senão
   o par fica com alturas diferentes.
 
+### Imagem de guia
+
+Bloco `figure` dos guias de skill (`/skills/<slug>`), criado em 17/11/2026 para o antes e depois
+do guia ui-designer.
+
+- **Só tela produzida na sessão gravada do próprio guia.** Nunca tela de cliente nem de produto real.
+- Par antes e depois: mesmo viewport, mesma escala, mesmo recorte.
+- Sem moldura de navegador, mockup de aparelho, sombra ou inclinação. A borda `border-border` é a
+  única moldura.
+- No máximo uma figura por guia, e só quando a prova é visual. O que uma tabela diz não vira imagem.
+- O `alt` diz o que muda entre as telas, nunca "screenshot de".
+
 ## 7. Movimento
 
 Stack: Lenis (scroll suave), cursor customizado, dot grid, shader plane, magnetic, typewriter,
@@ -115,6 +127,7 @@ scroll reveal, horizontal scroll.
 - Movimento que bloqueia leitura ou ignora `prefers-reduced-motion`.
 - Slide de apresentação inteiro como imagem de case.
 - Métrica interna de empresa ou cliente em case.
+- Imagem em guia que não saiu da demo do próprio guia.
 
 ## 10. Dívida conhecida
 

@@ -46,6 +46,11 @@ function block(b: GuideBlock, locale: Locale): string {
       return `\`\`\`text\n${b.turns
         .map((t) => (t.role === "user" ? `> ${pick(t.text, locale)}` : pick(t.text, locale)))
         .join("\n\n")}\n\`\`\``;
+    case "figure":
+      return [
+        ...b.images.map((i) => `**${pick(i.label, locale)}**\n\n![${pick(i.alt, locale)}](${BASE_URL}${i.src})`),
+        `*${pick(b.caption, locale)}*`,
+      ].join("\n\n");
   }
 }
 

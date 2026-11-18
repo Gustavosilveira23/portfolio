@@ -17,6 +17,7 @@ export async function SkillGuideArticle({ guide, locale }: { guide: SkillGuide; 
     copyAria: t("copy_aria"),
     terminal: t("terminal"),
     shell: t("shell"),
+    fullSize: t("full_size"),
   };
 
   const updated = new Intl.DateTimeFormat(locale === "pt" ? "pt-BR" : "en-US", {
