@@ -65,7 +65,9 @@ A página é uma rota só (`src/app/[locale]/skills/[slug]/`), que lê o guia de
    sitemap puxam dali.
 3. Duas rotas `.md` (o Next não aceita segmento `[slug].md`): copiar
    `src/app/skills/ux-designer.md/route.ts` e `src/app/pt/skills/ux-designer.md/route.ts`.
-4. `guide: "/skills/<slug>"` em `catalog.ts` (vira bloco de destaque no índice), uma linha em
+4. Imagem no guia: bloco `figure` (1 ou 2 imagens em `public/skills/<slug>/`), regras em
+   DESIGN.md, "Imagem de guia". Cada imagem já abre o PNG original em tamanho real.
+5. `guide: "/skills/<slug>"` em `catalog.ts` (vira bloco de destaque no índice), uma linha em
    `public/llms.txt` e o link "Full guide" no README do repo `claude-design-skills`.
 
 Material bruto de sessão gravada não entra no git: listar em `.git/info/exclude` antes do primeiro
@@ -79,6 +81,11 @@ commit e apagar depois de publicar. PRD e Spec de cada guia ficam em `.docs/`.
   Em localhost o SEO dá 92 por causa do canonical; só vale a nota de produção.
 - **Testar EN:** o navegador desta máquina manda o idioma como PT e o site redireciona para `/pt`.
   Usar contexto isolado com cookie `NEXT_LOCALE=en` (ou cabeçalho `Accept-Language: en`).
+- **Lighthouse em EN** (validado em 18/11/2026): no Chrome DevTools MCP o cabeçalho extra do
+  `emulate` não basta, porque o primeiro redirect grava `NEXT_LOCALE=pt`. Abrir a página num
+  `isolatedContext`, trocar o cookie com `evaluate_script`
+  (`document.cookie = "NEXT_LOCALE=en; path=/"`), navegar de novo para a URL EN e só então rodar o
+  `lighthouse_audit`. Conferir `finalDisplayedUrl` no `report.json`.
 - **Rich Results Test pede login desde nov/2026.** Sem login, conferir o JSON-LD com
   `python .docs/check-jsonld.py <url> [<url>...]` (datas com fuso, `image`, breadcrumb, FAQ) e
   deixar o teste oficial para o Gustavo rodar logado.
